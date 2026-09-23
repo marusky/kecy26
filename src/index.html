@@ -68,7 +68,7 @@
           "url": "%SITE_URL%/",
           "email": "kecyza@gmail.com",
           "telephone": "+421903350450",
-          "sameAs": ["https://www.instagram.com/kecy_za/", "https://www.facebook.com/kecyza/"]
+          "sameAs": ["https://www.instagram.com/kecy_za/", "https://www.facebook.com/kecyza/", "https://www.youtube.com/@kecyza1721"]
         },
         "offers": {
           "@type": "AggregateOffer",
@@ -90,45 +90,56 @@
       >Preskočiť na obsah</a
     >
 
-    <div class="mx-auto max-w-[30rem] overflow-x-clip bg-paper">
+    <div class="overflow-x-clip bg-paper">
       <!-- ============ HERO ============ -->
-      <header class="relative bg-lime pt-[5.6875rem]">
-        <p class="text-center text-xl">
-          <time datetime="2026-07-19">19.</time> – <time datetime="2026-07-25">25. 7. 2026</time>
-        </p>
+      <header class="relative bg-lime">
+        <div class="shell pt-[5.6875rem] lg:grid lg:grid-cols-[1.1fr_1fr] lg:items-end lg:gap-x-12 lg:pt-16 lg:pb-12">
+          <p class="text-center text-xl md:text-2xl lg:col-start-1 lg:text-left">
+            <time datetime="2026-07-19">19.</time> – <time datetime="2026-07-25">25. 7. 2026</time>
+          </p>
 
-        <div class="relative mx-6 mt-9">
-          <h1 class="font-display text-[clamp(3.25rem,16vw,4.25rem)] leading-[0.92] font-extrabold tracking-[-0.02em] uppercase">
-            <span class="sr-only">KECY Žilina 2026 – </span>English <br />camp for <br />youth
-          </h1>
-          <img
-            src="/assets/img/hero-guy.webp"
-            alt=""
-            width="47"
-            height="124"
-            class="absolute -top-[3.25rem] right-0 h-[7.75rem] w-auto"
-            fetchpriority="high"
-          />
-        </div>
+          <!-- veľkosť chlapíka je v em → drží pomer k nadpisu na každom rozlíšení -->
+          <div class="relative mt-9 w-fit font-display text-[clamp(3.25rem,16vw,4.25rem)] md:mt-12 md:text-[6.5rem] lg:col-start-1 lg:mt-8 lg:text-[clamp(5.5rem,8.4vw,8.5rem)]">
+            <h1 class="leading-[0.92] font-extrabold tracking-[-0.02em] uppercase md:whitespace-nowrap">
+              <span class="sr-only">KECY Žilina 2026 – </span>English <br />camp for <br />youth
+            </h1>
+            <img
+              src="/assets/img/hero-guy.webp"
+              alt=""
+              width="47"
+              height="124"
+              class="absolute -top-[0.85em] -right-[0.06em] h-[1.93em] w-auto lg:-top-[0.14em] lg:right-[0.01em] lg:h-[1.22em]"
+              fetchpriority="high"
+            />
+          </div>
 
-        <p class="mx-6 mt-10 text-right text-[1.5rem] leading-[1.2]">
-          Anglicko-konverzačný tábor pre&nbsp;ôsmakov, deviatakov a&nbsp;stredoškolákov, organizovaný mladými kresťanmi zo&nbsp;Žiliny.
-        </p>
+          <p class="mt-10 text-right text-[1.5rem] leading-[1.2] md:ml-auto md:max-w-xl md:text-[1.75rem] lg:col-start-1 lg:ml-0 lg:text-left">
+            Anglicko-konverzačný tábor pre&nbsp;ôsmakov, deviatakov a&nbsp;stredoškolákov, organizovaný mladými kresťanmi zo&nbsp;Žiliny.
+          </p>
 
-        <div class="relative mx-auto mt-8 h-[8.65625rem] w-[15.21875rem]">
-          <img src="/assets/img/hero-girls-outline.svg" alt="" width="243.5" height="138.5" class="absolute inset-0 size-full" />
-          <img
-            src="/assets/img/hero-girls.webp"
-            alt="Dve usmiate účastníčky tábora ukazujú palce hore"
-            width="215"
-            height="126"
-            class="absolute bottom-0 left-[0.75rem] h-[7.875rem] w-[13.4375rem]"
-            fetchpriority="high"
-          />
-        </div>
+          <!-- mobil: tvar z Figmy (baby sedia na tlačidle); desktop: nálepka s bielou zo všetkých strán -->
+          <div
+            class="relative mx-auto mt-8 aspect-[243.5/138.5] w-[15.21875rem] md:mt-12 md:w-[22rem] lg:col-start-2 lg:row-span-4 lg:row-start-1 lg:mt-0 lg:aspect-[250/160] lg:w-full lg:max-w-[40rem] lg:-rotate-2 lg:self-center"
+          >
+            <svg viewBox="0 0 243.5 138.5" class="absolute inset-0 size-full lg:hidden" aria-hidden="true" focusable="false">
+              <path d="M0 88V138.5H211.5L206 120L219.5 101L243.5 76L229.5 49L160 36.5L149 7L93 0L53.5 17.5L41.5 45L12 63L0 88Z" fill="#fff" />
+            </svg>
+            <svg viewBox="0 0 250 160" class="absolute inset-0 hidden size-full drop-shadow-[6px_6px_0_var(--color-ink)] lg:block" aria-hidden="true" focusable="false">
+              <path d="M4 96L0 128L10 158L120 154L236 160L246 130L238 104L250 78L234 50L166 38L154 8L98 0L58 16L46 44L16 62Z" fill="#fff" />
+            </svg>
+            <img
+              src="/assets/img/hero-girls.webp"
+              alt="Dve usmiate účastníčky tábora ukazujú palce hore"
+              width="215"
+              height="126"
+              class="absolute bottom-0 left-[4.93%] h-[90.97%] w-[88.3%] lg:top-[7.5%] lg:bottom-auto lg:left-[6.4%] lg:h-[78.75%] lg:w-[86%]"
+              fetchpriority="high"
+            />
+          </div>
 
-        <div class="relative z-10 mx-6">
-          <a href="#" class="btn-brutal">Registrácia</a>
+          <div class="relative z-10 md:mx-auto md:max-w-md lg:col-start-1 lg:mx-0 lg:mt-10 lg:w-full lg:max-w-sm">
+            <a href="%REGISTER_URL%" class="btn-brutal">Registrácia</a>
+          </div>
         </div>
 
         <!-- Prechodový pás „viacinfo“ -->
@@ -137,8 +148,9 @@
           class="relative -mt-[1.125rem] block bg-[linear-gradient(var(--color-lime)_0_46%,var(--color-pink)_46%)]"
           aria-label="Viac informácií o tábore"
         >
-          <svg viewBox="0 0 405.5 170.5" class="block h-auto w-full" aria-hidden="true" focusable="false">
+          <svg viewBox="0 0 405.5 170.5" class="block h-auto w-full" aria-hidden="true" focusable="false" data-band>
             <path
+              data-band-shape
               d="M96.7111 20.5L0 0V81.5L96.7111 103.5L156.652 151.5L209.541 170.5L312.296 148L405.481 111.5V20.5L308.267 56.5L209.541 77.5L156.652 60L96.7111 20.5Z"
               fill="#52E88B"
             />
@@ -154,15 +166,17 @@
 
       <main id="obsah" tabindex="-1" class="outline-none">
         <!-- ============ O TÁBORE ============ -->
-        <section id="o-tabore" aria-label="O tábore" class="bg-pink px-6 pt-4 pb-[4.8rem]">
-          <p class="text-[1.5rem] leading-[1.2]">
+        <section id="o-tabore" aria-label="O tábore" class="bg-pink pt-4 pb-[4.8rem] md:pt-14 lg:pt-28 lg:pb-32">
+         <div class="shell lg:grid lg:grid-cols-2 lg:items-center lg:gap-16">
+          <p class="text-[1.5rem] leading-[1.2] md:text-[1.75rem] lg:text-[2rem] xl:text-[2.25rem]">
             Američania prídu na&nbsp;týždeň na Slovensko, aby ti priniesli skutočnú
             <a href="#english-track" class="underline">konverzačnú angličtinu</a>. Hodiny angličtiny, ale iné ako v&nbsp;škole, alebo
             <a href="#sports-track" class="underline">tréning športov</a> v&nbsp;angličtine – je na&nbsp;tebe, čo si vyberieš. Okrem toho
             si užiješ veeeľa aktivít, zábavy, ale aj rozhovorov a&nbsp;hĺbky.
           </p>
 
-          <div class="relative mt-14 aspect-[354/200] w-full overflow-hidden bg-ink" data-video="Kf1UB9GcK-Y">
+          <div>
+          <div class="relative mt-14 aspect-[354/200] w-full overflow-hidden border-ink bg-ink lg:mt-0 lg:border-2 lg:shadow-brutal-lg" data-video="Kf1UB9GcK-Y">
             <button type="button" class="group absolute inset-0 size-full cursor-pointer" aria-label="Prehrať video: KECY 2022 Žilina (YouTube)">
               <img
                 src="/assets/img/video-poster.webp"
@@ -180,144 +194,151 @@
             </noscript>
           </div>
           <p class="mt-2 text-sm">Video sa načíta z YouTube až po kliknutí.</p>
+          </div>
+         </div>
         </section>
 
         <!-- ============ ZÁLOŽKY: TRACKY + PROGRAM ============ -->
-        <div class="relative bg-paper">
-          <!-- ENGLISH TRACK -->
-          <span id="english-track" class="tab-anchor" style="--i: 0"></span>
-          <div class="tab" style="--i: 0; --after: 2; --prev: var(--color-pink); --cur: var(--color-lime)">
-            <div class="tab__inner">
-              <h2 class="h-full">
-                <a href="#english-track" class="tab__link font-display text-[2.125rem] leading-none font-extrabold uppercase">English track</a>
-              </h2>
+        <!-- Každá karta sa prilepí pod predchádzajúcu; ďalšia karta ju prekryje a z predchádzajúcej ostane vidieť len záložka. -->
+        <div class="stack">
+          <span id="english-track" class="tab-anchor tab-anchor--english" style="--i: 0"></span>
+          <section class="stack-card stack-card--english" style="--i: 0; --cur: var(--color-lime)" aria-labelledby="english-track-title" data-stack-card>
+            <h2 id="english-track-title">
+              <a href="#english-track" class="tab__link font-display text-[2.125rem] leading-none font-extrabold uppercase md:text-5xl lg:text-6xl">English track</a>
+            </h2>
+            <div class="marquee" data-gallery data-marquee style="--dur: 38s" role="region" aria-label="Fotky z English tracku">
+              <ul class="marquee__track">
+                <li class="marquee__item">
+                  <button type="button" class="marquee__btn" data-lb>
+                    <img src="/assets/img/english-1.webp" alt="Účastníci tábora sa rozprávajú pri stole v altánku, v popredí americké sladkosti" width="800" height="451" loading="lazy" class="marquee__img" />
+                  </button>
+                </li>
+                <li class="marquee__item">
+                  <button type="button" class="marquee__btn" data-lb>
+                    <img src="/assets/img/english-2.webp" alt="Usmiata účastníčka sa rozpráva s kamarátom pred drevenou stenou s fotkami" width="799" height="533" loading="lazy" class="marquee__img" />
+                  </button>
+                </li>
+                <li class="marquee__item">
+                  <button type="button" class="marquee__btn" data-lb>
+                    <img src="/assets/img/photo-1.webp" alt="Účastníci sa rozprávajú v drevenej chate s fotkami na stene" width="799" height="533" loading="lazy" class="marquee__img" />
+                  </button>
+                </li>
+                <li class="marquee__item">
+                  <button type="button" class="marquee__btn" data-lb>
+                    <img src="/assets/img/photo-4.webp" alt="Ruky držia mobil a tablet s nakreslenými rukami počas hry" width="799" height="533" loading="lazy" class="marquee__img" />
+                  </button>
+                </li>
+              </ul>
             </div>
-          </div>
-          <section aria-labelledby="english-track-title" class="tab-body pb-16" style="--cur: var(--color-lime); --after: 2">
-            <h3 id="english-track-title" class="sr-only">English track – anglický track</h3>
-            <div class="relative h-[16rem]">
-              <img
-                src="/assets/img/english-1.webp"
-                alt="Účastníci tábora sa rozprávajú pri stole v altánku, v popredí americké sladkosti"
-                width="800"
-                height="451"
-                loading="lazy"
-                class="absolute top-2 -left-16 aspect-[267/151] w-[66%] border-2 border-ink object-cover shadow-brutal"
-              />
-              <img
-                src="/assets/img/english-2.webp"
-                alt="Usmiata účastníčka sa rozpráva s kamarátom pred drevenou stenou s fotkami"
-                width="799"
-                height="533"
-                loading="lazy"
-                class="absolute top-[4.9rem] left-[calc(50%+1.9rem)] aspect-[799/533] w-[61%] border-2 border-ink object-cover shadow-brutal"
-              />
-            </div>
-            <p class="mt-4 px-6 text-xl leading-[1.2]">
+            <div class="card-copy">
+            <p class="text-xl leading-[1.2] md:text-2xl lg:text-[1.75rem]">
               Vďaka zábavným aktivitám a&nbsp;<span class="underline decoration-[1.5px] underline-offset-[0.18em]">rozhovorom s&nbsp;Američanmi</span> sa budeš môcť
               zdokonaľovať v&nbsp;hovorovej angličtine jednoduchým, no zato efektívnym spôsobom. Z&nbsp;English tracku si okrem amerického prízvuku
               odnesieš aj americké sladkosti.
             </p>
-            <p class="mt-12 px-6 italic">Svoj track si budeš môcť vybrať pri registrácii.</p>
+            <div>
+              <a href="%REGISTER_URL%?track=english" class="btn-cta" style="--cta: var(--color-pink)"><span lang="en">English it is</span><span class="sr-only"> – registrácia na English track</span> <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
+            </div>
+            </div>
           </section>
-
-          <!-- SPORTS TRACK -->
-          <span id="sports-track" class="tab-anchor" style="--i: 1"></span>
-          <div class="tab" style="--i: 1; --after: 1; --prev: var(--color-lime); --cur: var(--color-blue)">
-            <div class="tab__inner">
-              <h2 class="h-full">
-                <a href="#sports-track" class="tab__link font-display text-[2.125rem] leading-none font-extrabold uppercase">Sports track</a>
-              </h2>
+          <span id="sports-track" class="tab-anchor tab-anchor--sports" style="--i: 1"></span>
+          <section class="stack-card stack-card--sports" style="--i: 1; --cur: var(--color-blue)" aria-labelledby="sports-track-title" data-stack-card>
+            <h2 id="sports-track-title">
+              <a href="#sports-track" class="tab__link font-display text-[2.125rem] leading-none font-extrabold uppercase md:text-5xl lg:text-6xl">Sports track</a>
+            </h2>
+            <div class="marquee" data-gallery data-marquee style="--dur: 30s" role="region" aria-label="Fotky zo Sports tracku">
+              <ul class="marquee__track">
+                <li class="marquee__item">
+                  <button type="button" class="marquee__btn" data-lb>
+                    <img src="/assets/img/sports-1.webp" alt="Účastníci tábora pri americkom športe s Američanmi" width="800" height="533" loading="lazy" class="marquee__img" />
+                  </button>
+                </li>
+                <li class="marquee__item">
+                  <button type="button" class="marquee__btn" data-lb>
+                    <img src="/assets/img/sports-2.webp" alt="Tím účastníkov počas tréningu na ihrisku" width="800" height="533" loading="lazy" class="marquee__img" />
+                  </button>
+                </li>
+                <li class="marquee__item">
+                  <button type="button" class="marquee__btn" data-lb>
+                    <img src="/assets/img/sports-3.webp" alt="Hra frisbee na lúke počas tábora" width="800" height="533" loading="lazy" class="marquee__img" />
+                  </button>
+                </li>
+              </ul>
             </div>
-          </div>
-          <section aria-labelledby="sports-track-title" class="tab-body pb-16" style="--cur: var(--color-blue); --after: 1">
-            <h3 id="sports-track-title" class="sr-only">Sports track – športový track</h3>
-            <div class="relative h-[16rem]">
-              <img
-                src="/assets/img/sports-1.webp"
-                alt="Účastníci tábora pri americkom športe s Američanmi"
-                width="800"
-                height="533"
-                loading="lazy"
-                class="absolute top-2 left-[calc(50%-1rem)] aspect-[267/151] w-[66%] border-2 border-ink object-cover shadow-brutal"
-              />
-              <img
-                src="/assets/img/sports-2.webp"
-                alt="Tím účastníkov počas tréningu na ihrisku"
-                width="800"
-                height="533"
-                loading="lazy"
-                class="absolute top-[4.9rem] -left-10 aspect-[799/533] w-[61%] border-2 border-ink object-cover shadow-brutal"
-              />
-            </div>
-            <p class="mt-4 px-6 text-xl leading-[1.2]">
+            <div class="card-copy">
+            <p class="text-xl leading-[1.2] md:text-2xl lg:text-[1.75rem]">
               Si skôr športový typ? V&nbsp;Sports tracku sa každé dopoludnie budeš zdokonaľovať v&nbsp;technike
-              <span class="underline decoration-[1.5px] underline-offset-[0.18em]">amerických športov</span> – od frisbee cez americký futbal až po
-              baseball – a&nbsp;zašportuješ si s&nbsp;ostatnými nadšencami aj Američanmi. Trochu angličtiny ťa neminie ani tu, no bude jej podstatne menej.
+              <span class="underline decoration-[1.5px] underline-offset-[0.18em]">amerických športov</span> a&nbsp;zašportuješ si s&nbsp;ostatnými
+              nadšencami aj Američanmi. Trochu angličtiny ťa neminie ani tu, no bude jej podstatne menej.
             </p>
-            <p class="mt-12 px-6 italic">Svoj track si budeš môcť vybrať pri registrácii.</p>
-          </section>
-
-          <!-- PROGRAM -->
-          <span id="program" class="tab-anchor" style="--i: 2"></span>
-          <div class="tab" style="--i: 2; --after: 0; --prev: var(--color-blue); --cur: var(--color-green)">
-            <div class="tab__inner">
-              <h2 class="h-full">
-                <a href="#program" class="tab__link font-display text-[2.125rem] leading-none font-extrabold uppercase">Program</a>
-              </h2>
+            <div>
+              <a href="%REGISTER_URL%?track=sports" class="btn-cta" style="--cta: var(--color-lime)">Už bežím<span class="sr-only"> – registrácia na Sports track</span> <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
             </div>
-          </div>
-          <section aria-labelledby="program-title" class="tab-body border-b-2 border-ink px-6 pt-2 pb-16" style="--cur: var(--color-green)">
-            <h3 id="program-title" class="text-xl leading-[1.2]">Takto nejako vyzerá bežný deň na KECY:</h3>
-            <ol class="mt-6 space-y-3">
-              <li class="flex gap-4 rounded-xl border-2 border-ink bg-paper p-4 shadow-brutal">
-                <span class="w-14 shrink-0 font-display text-lg font-extrabold">ráno</span>
-                <p class="leading-snug"><strong class="font-semibold">Raňajky a spoločný štart</strong> – krátky program, ktorý naštartuje celý deň.</p>
-              </li>
-              <li class="flex gap-4 rounded-xl border-2 border-ink bg-lime p-4 shadow-brutal">
-                <span class="w-14 shrink-0 font-display text-lg font-extrabold">dopo&shy;ludnie</span>
-                <p class="leading-snug">
-                  <strong class="font-semibold">English alebo Sports track</strong> – v&nbsp;skupinkách s&nbsp;Američanmi podľa toho, čo si vyberieš pri registrácii.
-                </p>
-              </li>
-              <li class="flex gap-4 rounded-xl border-2 border-ink bg-pink p-4 shadow-brutal">
-                <span class="w-14 shrink-0 font-display text-lg font-extrabold">poobede</span>
-                <p class="leading-snug">
-                  <strong class="font-semibold">Aktivity</strong> – teambuilding, súťaže proti ostatným tímom, tvorivé dielne či tvoj obľúbený americký šport.
-                </p>
-              </li>
-              <li class="flex gap-4 rounded-xl border-2 border-ink bg-blue p-4 shadow-brutal">
-                <span class="w-14 shrink-0 font-display text-lg font-extrabold">večer</span>
-                <p class="leading-snug">
-                  <strong class="font-semibold">Večerný program</strong> – veľa zábavy aj hĺbky, osobné príbehy ľudí a&nbsp;rozhovory o&nbsp;Bohu, možno inak, ako si
-                  počul doteraz.
-                </p>
-              </li>
-              <li class="flex gap-4 rounded-xl border-2 border-ink bg-paper p-4 shadow-brutal">
-                <span class="w-14 shrink-0 font-display text-lg font-extrabold">noc</span>
-                <p class="leading-snug">
-                  <strong class="font-semibold">Spoločné zakončenie</strong> – rozhovory pri ohni, kapelka, diskotéka či… nechaj sa prekvapiť.
-                </p>
-              </li>
+            </div>
+          </section>
+          <span id="program" class="tab-anchor tab-anchor--program" style="--i: 2"></span>
+          <section class="stack-card stack-card--last stack-card--program" style="--i: 2; --cur: var(--color-green)" aria-labelledby="program-title" data-stack-card>
+            <h2 id="program-title">
+              <a href="#program" class="tab__link font-display text-[2.125rem] leading-none font-extrabold uppercase md:text-5xl lg:text-6xl">Program</a>
+            </h2>
+            <div class="marquee" data-gallery data-marquee style="--dur: 34s" role="region" aria-label="Fotky z programu">
+              <ul class="marquee__track">
+                <li class="marquee__item">
+                  <button type="button" class="marquee__btn" data-lb>
+                    <img src="/assets/img/photo-5.webp" alt="Skupinka mladých sa rozpráva pri stoloch v jedálni" width="799" height="533" loading="lazy" class="marquee__img" />
+                  </button>
+                </li>
+                <li class="marquee__item">
+                  <button type="button" class="marquee__btn" data-lb>
+                    <img src="/assets/img/photo-3.webp" alt="Účastníčka v okuliaroch drží balíček amerických cukríkov pri stole s károvaným obrusom" width="799" height="533" loading="lazy" class="marquee__img" />
+                  </button>
+                </li>
+                <li class="marquee__item">
+                  <button type="button" class="marquee__btn" data-lb>
+                    <img src="/assets/img/photo-2.webp" alt="Chalan zapisuje niečo na podložku, vedľa neho sa pozerá kamarátka" width="799" height="533" loading="lazy" class="marquee__img" />
+                  </button>
+                </li>
+              </ul>
+            </div>
+            <ol class="program-list">
+              <li><span class="program-list__time">ráno</span><span>raňajky a&nbsp;spoločný štart</span></li>
+              <li><span class="program-list__time">dopoludnie</span><span>English alebo Sports track s&nbsp;Američanmi</span></li>
+              <li><span class="program-list__time">poobede</span><span>teambuilding, súťaže, tvorivé dielne, šport</span></li>
+              <li><span class="program-list__time">večer</span><span>zábava aj hĺbka, príbehy a&nbsp;rozhovory o&nbsp;Bohu</span></li>
+              <li><span class="program-list__time">noc</span><span>oheň, kapelka, diskotéka či… nechaj sa prekvapiť</span></li>
             </ol>
           </section>
         </div>
 
         <!-- ============ „COME TO KECY“ THEY SAID ============ -->
-        <section aria-labelledby="testimonials-title" class="bg-paper px-6 pt-10 pb-24">
-          <h2 id="testimonials-title" class="font-display text-[2.125rem] leading-[1.05] font-extrabold uppercase">
-            “Come to KECY” <br />they said
-          </h2>
+        <section aria-labelledby="testimonials-title" class="bg-paper pt-10 pb-24 lg:pt-28 lg:pb-32">
+         <div class="shell lg:grid lg:grid-cols-[1fr_1.35fr] lg:items-start lg:gap-16">
+          <div class="lg:sticky lg:top-24">
+            <h2 id="testimonials-title" class="font-display text-[2.125rem] leading-[1.05] font-extrabold uppercase md:text-5xl lg:text-6xl xl:text-7xl">
+              “Come to KECY” <br />they said
+            </h2>
+            <p class="mt-4 font-display text-xl leading-[1.05] font-extrabold uppercase md:text-2xl lg:mt-8 lg:text-4xl xl:text-5xl">
+              <span class="text-pink [-webkit-text-stroke:1.5px_var(--color-ink)] [paint-order:stroke_fill]">“It actually is fun!”</span><br />they said
+            </p>
+          </div>
 
-          <div class="mt-6">
-            <div role="tablist" aria-label="Vyber, koho príbeh si chceš prečítať" class="relative flex items-end pl-3" data-quote-tabs>
+          <div class="mt-6 md:mx-auto md:max-w-xl lg:mt-0 lg:w-full lg:max-w-none">
+            <!-- ručne písaná nápoveda so šípkou na Rišovu hlavu (zmizne, keď na neho niekto klikne) -->
+            <div class="quote-hint" aria-hidden="true" data-quote-hint>
+              <span class="quote-hint__text">klikni na mňa<br />a&nbsp;zisti, ako sa<br />páčilo mne</span>
+              <svg class="quote-hint__arrow" viewBox="0 0 90 70" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M86 12C58 4 26 16 16 58" />
+                <path d="M28 50L16 60L10 45" />
+              </svg>
+            </div>
+            <div role="tablist" aria-label="Vyber, koho príbeh si chceš prečítať" class="heads relative flex items-end justify-center" data-quote-tabs>
               <button
                 type="button"
                 role="tab"
                 id="tab-jaylin"
                 aria-controls="quote-jaylin"
                 aria-selected="true"
-                class="head -mb-6 w-[7.9375rem] shrink-0"
+                class="head -mb-4 w-[7.9375rem] shrink-0"
                 data-color="var(--color-pink)"
               >
                 <span class="sr-only">Jaylin</span>
@@ -342,7 +363,7 @@
                 aria-controls="quote-riso"
                 aria-selected="false"
                 tabindex="-1"
-                class="head -mb-6 -ml-4 w-[7.6875rem] shrink-0"
+                class="head -mb-4 -ml-4 w-[7.6875rem] shrink-0"
                 data-color="var(--color-green)"
               >
                 <span class="sr-only">Rišo</span>
@@ -370,7 +391,7 @@
                 aria-controls="quote-sarka"
                 aria-selected="false"
                 tabindex="-1"
-                class="head -mb-6 -ml-6 w-[8.25rem] shrink-0"
+                class="head -mb-4 -ml-6 w-[8.25rem] shrink-0"
                 data-color="var(--color-lime)"
               >
                 <span class="sr-only">Šárka</span>
@@ -391,7 +412,7 @@
             </div>
 
             <div class="quote-card relative z-10 overflow-hidden rounded-xl border-2 border-ink bg-pink shadow-brutal" data-quote-card>
-              <div class="relative px-[1.625rem] pt-7 pb-8 text-xl leading-[1.2]">
+              <div class="relative px-[1.625rem] pt-7 pb-8 text-xl leading-[1.2] lg:px-10 lg:pt-10 lg:pb-10 lg:text-2xl">
                 <div id="quote-jaylin" role="tabpanel" aria-labelledby="tab-jaylin" class="quote-panel" tabindex="0">
                   <blockquote>
                     <p lang="en"><span aria-hidden="true">🇺🇸 </span>Every KECY camp I’ve been to has been a beautiful experience. I’ve met new people and made new friends, and by the end of camp these friends truly do become family. It’s a place where you will feel welcomed, seen and heard right from the beginning.</p>
@@ -415,15 +436,17 @@
               </div>
             </div>
           </div>
+         </div>
         </section>
 
         <!-- ============ PHOTOS ============ -->
-        <section aria-labelledby="photos-title" class="on-dark bg-ink px-6 pt-16 pb-12 text-white">
-          <h2 id="photos-title" class="font-display text-[2.125rem] leading-none font-extrabold uppercase">Photos</h2>
+        <section aria-labelledby="photos-title" class="on-dark bg-ink pt-16 pb-12 text-white lg:pt-28">
+         <div class="shell">
+          <h2 id="photos-title" class="font-display text-[2.125rem] leading-none font-extrabold uppercase md:text-5xl lg:text-6xl">Photos</h2>
 
-          <ul class="mt-10 grid grid-cols-2 gap-x-5" data-gallery>
-            <li class="flex flex-col gap-[1.625rem]">
-              <button type="button" class="photo-btn aspect-[167/111]" style="--c: var(--color-lime)" data-index="0">
+          <ul class="mt-10 grid grid-cols-2 gap-x-5 md:gap-x-8 lg:mt-14 lg:grid-cols-4" data-gallery data-gallery-ordered>
+            <li class="flex flex-col gap-[1.625rem] md:gap-8">
+              <button type="button" data-lb class="photo-btn aspect-[167/111]" style="--c: var(--color-lime)" data-index="0">
                 <img
                   src="/assets/img/photo-1.webp"
                   alt="Účastníci sa rozprávajú v drevenej chate s fotkami na stene"
@@ -433,7 +456,7 @@
                   class="size-full object-cover"
                 />
               </button>
-              <button type="button" class="photo-btn aspect-[167/225]" style="--c: var(--color-pink)" data-index="2">
+              <button type="button" data-lb class="photo-btn aspect-[167/225]" style="--c: var(--color-pink)" data-index="2">
                 <img
                   src="/assets/img/photo-3.webp"
                   alt="Účastníčka v okuliaroch drží balíček amerických cukríkov pri stole s károvaným obrusom"
@@ -444,8 +467,8 @@
                 />
               </button>
             </li>
-            <li class="flex flex-col gap-[1.625rem]">
-              <button type="button" class="photo-btn aspect-[166/228]" style="--c: var(--color-green)" data-index="1">
+            <li class="flex flex-col gap-[1.625rem] md:gap-8">
+              <button type="button" data-lb class="photo-btn aspect-[166/228]" style="--c: var(--color-green)" data-index="1">
                 <img
                   src="/assets/img/photo-2.webp"
                   alt="Chalan zapisuje niečo na podložku, vedľa neho sa pozerá kamarátka"
@@ -455,7 +478,7 @@
                   class="size-full object-cover object-[53%_50%]"
                 />
               </button>
-              <button type="button" class="photo-btn aspect-[167/112]" style="--c: var(--color-lime)" data-index="3">
+              <button type="button" data-lb class="photo-btn aspect-[167/112]" style="--c: var(--color-lime)" data-index="3">
                 <img
                   src="/assets/img/photo-4.webp"
                   alt="Ruky držia mobil a tablet s nakreslenými rukami počas hry"
@@ -466,8 +489,8 @@
                 />
               </button>
             </li>
-            <li class="col-span-2 mt-[1.1875rem]">
-              <button type="button" class="photo-btn aspect-[354/236]" style="--c: var(--color-blue)" data-index="4">
+            <li class="col-span-2 mt-[1.1875rem] md:mt-8 lg:mt-0">
+              <button type="button" data-lb class="photo-btn aspect-[354/236] lg:aspect-auto" style="--c: var(--color-blue)" data-index="4">
                 <img
                   src="/assets/img/photo-5.webp"
                   alt="Skupinka mladých sa rozpráva pri stoloch v jedálni"
@@ -489,44 +512,58 @@
               >viac fotiek na flickri <span aria-hidden="true">→</span><span class="sr-only">(otvorí sa v novom okne)</span></a
             >
           </p>
+         </div>
         </section>
 
         <!-- ============ CENA ============ -->
-        <section aria-labelledby="price-title" class="bg-ink px-6 pt-8 pb-24">
+        <section aria-labelledby="price-title" class="bg-ink pt-8 pb-28 md:pb-36 lg:pt-16 lg:pb-48">
+         <div class="shell">
           <div
-            class="relative overflow-hidden rounded-xl border-2 border-ink bg-blue shadow-[4px_4px_0_0_var(--color-green),6px_6px_0_0_var(--color-ink),10px_10px_0_0_var(--color-lime)]"
+            class="relative mx-auto overflow-hidden rounded-xl md:max-w-md md:[zoom:1.15] lg:[zoom:1.3] 2xl:[zoom:1.45] border-2 border-ink bg-blue shadow-[4px_4px_0_0_var(--color-green),6px_6px_0_0_var(--color-ink),10px_10px_0_0_var(--color-lime)]"
           >
             <h2 id="price-title" class="sr-only">Cena</h2>
             <p class="px-[1.625rem] pt-5 text-xl leading-[1.2]">
               7 dní plných angličtiny, športu, nových priateľstiev, amerických sladkostí, hlbokých rozhovorov, plnej penzie, ubytovania v&nbsp;horách,
               táborový merch a&nbsp;mnoho ďalšieho už od
             </p>
-            <p class="mt-3 text-center font-display text-[4rem] leading-none font-extrabold">199&nbsp;€</p>
-            <p class="mt-1 text-center text-sm">(249&nbsp;€, so zľavou za pozvaného kamoša 199&nbsp;€)</p>
+            <div class="pl-5">
+              <p class="mt-6 text-center font-display text-[clamp(3.25rem,15vw,4rem)] leading-none font-extrabold">199&nbsp;€</p>
+              <p class="mt-1.5 text-center text-[clamp(0.75rem,3.4vw,0.875rem)] leading-snug whitespace-nowrap">249&nbsp;€ · s&nbsp;pozvaným kamošom 199&nbsp;€</p>
+            </div>
 
-            <div class="relative mt-4 h-[7.5rem]">
+            <div class="relative z-10 mx-[1.375rem] mt-3 mb-[1.375rem]">
+              <a href="%REGISTER_URL%" class="btn-brutal">Registrácia</a>
+            </div>
+
+            <!-- „Profesor“ pred tlačidlom: marshmallow sedí presne na konci tyčky z fotky
+                 (tyčka vo fotke ide 0.3237 px doprava na 1 px hore a vychádza z pravého horného rohu). -->
+            <div class="pointer-events-none absolute bottom-0 left-0 z-20 h-[150.46px] w-[82px]" aria-hidden="true">
+              <img src="/assets/img/price-guy.webp" alt="" width="328" height="602" loading="lazy" class="size-full rounded-bl-[10px]" />
+              <svg class="absolute top-0 left-0 overflow-visible" width="82" height="1" viewBox="0 0 82 1" focusable="false">
+                <line x1="79.99" y1="6" x2="83.23" y2="-4" stroke="#161616" stroke-width="1" stroke-linecap="round" />
+              </svg>
               <img
-                src="/assets/img/price-guy.webp"
+                src="/assets/img/price-phone.webp"
                 alt=""
-                width="300"
-                height="551"
+                width="28"
+                height="42"
                 loading="lazy"
-                class="absolute bottom-0 left-0 z-0 h-[9.4375rem] w-[5.125rem] rounded-bl-[10px] object-cover"
+                class="absolute top-[-23.25px] left-[82.98px] h-[21px] w-[14px] max-w-none"
               />
-              <img src="/assets/img/price-phone.webp" alt="" width="14" height="21" loading="lazy" class="absolute -top-[1.25rem] left-[4.9rem] w-[0.875rem]" />
-              <div class="absolute right-[1.375rem] bottom-[1.5rem] left-[1.375rem] z-10">
-                <a href="#" class="btn-brutal">Registrácia</a>
-              </div>
             </div>
           </div>
+         </div>
         </section>
       </main>
 
       <!-- ============ GET IN TOUCH / FOOTER ============ -->
-      <footer class="on-dark bg-ink px-6 pb-8 text-white">
-        <h2 class="font-display text-[2.125rem] leading-none font-extrabold uppercase">Get in touch</h2>
-
-        <ul class="mt-5 flex items-center gap-4" aria-label="Sociálne siete">
+      <footer class="on-dark bg-ink pb-8 text-white">
+        <div class="shell">
+          <div class="md:grid md:grid-cols-[1fr_auto] md:items-end md:gap-12">
+            <div>
+              <h2 class="font-display text-[2.125rem] leading-none font-extrabold uppercase md:text-5xl lg:text-7xl">Get in touch</h2>
+              <p class="mt-4 max-w-sm text-white/80 md:text-lg">Máš otázku k&nbsp;táboru, registrácii alebo platbe? Napíš alebo zavolaj.</p>
+              <ul class="mt-5 flex items-center gap-4" aria-label="Sociálne siete">
           <li>
             <a
               href="https://www.instagram.com/kecy_za/"
@@ -543,14 +580,15 @@
             </a>
           </li>
           <li>
-            <a href="#" class="grid h-12 w-14 place-items-center transition-transform hover:-translate-y-0.5">
-              <img src="/assets/img/icon-youtube.svg" alt="YouTube KECY Žilina" width="49" height="34" />
+            <a href="https://www.youtube.com/@kecyza1721" target="_blank" rel="noopener" class="grid h-12 w-14 place-items-center transition-transform hover:-translate-y-0.5">
+              <img src="/assets/img/icon-youtube.svg" alt="YouTube KECY Žilina (otvorí sa v novom okne)" width="49" height="34" />
             </a>
           </li>
         </ul>
+            </div>
 
-        <ul class="mt-8 grid grid-cols-2 gap-2 text-center">
-          <li>
+            <ul class="mt-10 grid grid-cols-2 gap-2 text-center md:mt-0 md:gap-8">
+              <li>
             <div class="relative mx-auto h-[6.3125rem] w-[7.3125rem]">
               <svg viewBox="0 0 117 101" class="absolute inset-0 size-full -scale-x-100" aria-hidden="true" preserveAspectRatio="none">
                 <path
@@ -578,20 +616,20 @@
             <p class="text-lg whitespace-nowrap"><a href="mailto:kecyza@gmail.com" class="hover:underline">kecyza@gmail.com</a></p>
             <p class="mt-4 text-sm">komunikácia</p>
           </li>
-        </ul>
+            </ul>
+          </div>
 
-        <h2 class="mt-10 text-xl font-bold">Za spoluprácu vďačíme:</h2>
-        <ul class="mt-3 space-y-3">
-          <li>KECY Slovensko</li>
-          <li>Tréningovému centru TC KOMPAS</li>
-          <li>
-            <a href="https://www.ecavza.sk/" target="_blank" rel="noopener" class="hover:underline"
-              >Zboru Evanjelickej cirkvi v&nbsp;Žiline<span class="sr-only"> (otvorí sa v novom okne)</span></a
-            >
-          </li>
-        </ul>
+          <div class="mt-14 border-t border-white/20 pt-8 md:flex md:flex-wrap md:items-baseline md:gap-x-6 lg:mt-20">
+            <h2 class="font-bold">Za spoluprácu vďačíme:</h2>
+            <ul class="mt-3 space-y-2 text-white/80 md:mt-0 md:flex md:flex-wrap md:gap-x-6 md:space-y-0">
+              <li><a href="https://kecy.sk" target="_blank" rel="noopener" class="hover:text-white hover:underline">KECY Slovensko<span class="sr-only"> (otvorí sa v novom okne)</span></a></li>
+              <li><a href="https://tckompas.sk" target="_blank" rel="noopener" class="hover:text-white hover:underline">Tréningovému centru TC KOMPAS<span class="sr-only"> (otvorí sa v novom okne)</span></a></li>
+              <li><a href="https://www.ecavza.sk/" target="_blank" rel="noopener" class="hover:text-white hover:underline">Zboru Evanjelickej cirkvi v&nbsp;Žiline<span class="sr-only"> (otvorí sa v novom okne)</span></a></li>
+            </ul>
+          </div>
+        </div>
 
-        <p class="mt-16 text-center text-xs text-muted">
+        <p class="mt-16 text-center text-xs text-muted lg:mt-24">
           All rights reserved © 2026<br />
           made with &lt;3 by <a href="https://mrshq.sk" class="text-blue underline" target="_blank" rel="noopener">mrshq.sk</a>
         </p>

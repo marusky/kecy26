@@ -8,6 +8,9 @@ import { fileURLToPath } from "node:url";
 
 // Adresa, na ktorej stránka pobeží (canonical, OG, sitemap). Zmeň pred nasadením, ak je iná.
 const SITE_URL = "https://kecy.ecavza.sk";
+// Kam vedú tlačidlá „Registrácia“. Tracky pridávajú ?track=english / ?track=sports,
+// takže keď bude /registracia/, stačí sem dať "/registracia/" a formulár si track prečíta z URL.
+const REGISTER_URL = "#";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const src = join(root, "src");
@@ -22,6 +25,8 @@ const fonts = {
   "instrument-sans-latin-ext.woff2": "@fontsource-variable/instrument-sans/files/instrument-sans-latin-ext-standard-normal.woff2",
   "instrument-sans-latin-italic.woff2": "@fontsource-variable/instrument-sans/files/instrument-sans-latin-standard-italic.woff2",
   "instrument-sans-latin-ext-italic.woff2": "@fontsource-variable/instrument-sans/files/instrument-sans-latin-ext-standard-italic.woff2",
+  "caveat-latin.woff2": "@fontsource-variable/caveat/files/caveat-latin-wght-normal.woff2",
+  "caveat-latin-ext.woff2": "@fontsource-variable/caveat/files/caveat-latin-ext-wght-normal.woff2",
 };
 
 function copyStatic() {
@@ -37,7 +42,7 @@ function copyStatic() {
   for (const file of ["index.html", "robots.txt", "sitemap.xml"]) {
     const p = join(dist, file);
     if (!existsSync(p)) continue;
-    writeFileSync(p, readFileSync(p, "utf8").replaceAll("%SITE_URL%", SITE_URL).replaceAll("%BUILD%", buildId));
+    writeFileSync(p, readFileSync(p, "utf8").replaceAll("%SITE_URL%", SITE_URL).replaceAll("%REGISTER_URL%", REGISTER_URL).replaceAll("%BUILD%", buildId));
   }
 }
 
