@@ -1,0 +1,4 @@
+node_modules/
+dist/
+.figma/
+.DS_Store
