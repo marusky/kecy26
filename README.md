@@ -1,4 +1,4 @@
-# KECY Žilina 2026 – web
+# KECY Žilina 2027 – web
 
 Statická stránka: HTML + Tailwind CSS v4 + vanilla JS.
 
@@ -6,16 +6,20 @@ Statická stránka: HTML + Tailwind CSS v4 + vanilla JS.
 
 ```bash
 npm install        # prvýkrát
-npm run dev        # vývoj: http://localhost:5173 (sleduje zmeny)
+npm run dev        # vývoj: http://localhost:5173 (sleduje zmeny, dostupné aj z telefónu na rovnakej wifi)
 npm run build      # produkčný build do dist/
+npm run photos     # fotky z fotky-originaly/ → src/assets/img/photos/ (WebP 640/1280/2400)
 ```
 
 ## Nasadenie
 
-1. `npm run build`
-2. Celý **obsah** priečinka `dist/` nahraj cez FTP do koreňa webu.
+**GitHub Pages (automaticky):** každý push do `main` spustí `.github/workflows/deploy.yml`, ktorý web zbuilduje a nasadí.
+Jednorazovo: v repozitári *Settings → Pages → Source: GitHub Actions*. Vlastnú doménu (napr. `kecy.ecavza.sk`) nastavíš tamtiež
+a v DNS pridáš CNAME záznam na `<používateľ>.github.io`.
 
-Adresa webu (canonical, OG, sitemap) je v `scripts/build.mjs` → `SITE_URL`.
+**Ručne cez FTP:** `npm run build` a obsah priečinka `dist/` nahraj do koreňa webu.
+
+Adresa webu (canonical, OG, sitemap) je v `scripts/build.mjs` → `SITE_URL` (Action ju nastaví sama).
 
 ## Štruktúra
 

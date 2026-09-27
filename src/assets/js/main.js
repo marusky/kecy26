@@ -115,7 +115,11 @@
         card.style.top = "";
         if (getComputedStyle(card).position !== "sticky") return; // desktop: mriežka, nič sa nelepí
         const top = parseFloat(getComputedStyle(card).top) || 0;
-        const overflow = card.offsetHeight - (window.innerHeight - top);
+        // skutočná výška obsahu (bez min-height, ktorá kartu len naťahuje prázdnym miestom)
+        card.style.minHeight = "0";
+        const contentHeight = card.offsetHeight;
+        card.style.minHeight = "";
+        const overflow = contentHeight - (window.innerHeight - top);
         if (overflow > 0) card.style.top = `${top - overflow}px`;
       });
     }
@@ -146,6 +150,11 @@
       // takže polovica musí mať párny počet fotiek – inak by sa pri opakovaní „preklopili“ a pás by poskočil.
       if (originals.length % 2) addClones(track, originals);
       addClones(track, [...track.children]);
+      // rýchlosť: každá fotka prejde za ~6 s bez ohľadu na to, koľko ich v páse je
+      track.style.setProperty("--dur", `${(track.children.length / 2) * 6}s`);
+      // poistka pre staršie prehliadače bez overflow: clip
+      const marquee = track.parentElement;
+      marquee.addEventListener("scroll", () => (marquee.scrollLeft = 0));
     });
   }
 
@@ -206,7 +215,7 @@
     tabs.forEach((tab, i) => {
       tab.addEventListener("click", () => {
         select(tab);
-        if (tab.id === "tab-riso") hint?.classList.add("is-done");
+        hint?.classList.add("is-done");
       });
       tab.addEventListener("keydown", (e) => {
         let next = null;
@@ -251,14 +260,12 @@
       // originály (bez klonov z marquee); hlavná galéria má vlastné poradie v data-index
       let originals = [...gallery.querySelectorAll("[data-lb]")].filter((b) => !b.closest("[data-clone]"));
       if (gallery.hasAttribute("data-gallery-ordered")) originals.sort((a, b) => a.dataset.index - b.dataset.index);
-      const list = originals.map((b) => {
-        const im = b.querySelector("img");
-        return { src: im.currentSrc || im.src, alt: im.alt };
-      });
+      // v lightboxe sa zobrazí veľká verzia (data-full), inak obrázok z tlačidla
+      const fullSrc = (b) => b.dataset.full || b.querySelector("img").getAttribute("src");
+      const list = originals.map((b) => ({ src: fullSrc(b), alt: b.querySelector("img").alt }));
 
       gallery.querySelectorAll("[data-lb]").forEach((b) => {
-        const src = b.querySelector("img").getAttribute("src");
-        const index = list.findIndex((p) => p.src.endsWith(src));
+        const index = list.findIndex((p) => p.src === fullSrc(b));
         b.setAttribute("aria-haspopup", "dialog");
         b.setAttribute("aria-label", `Otvoriť fotku ${index + 1} z ${list.length}: ${list[index].alt}`);
         b.addEventListener("click", () => {
@@ -306,6 +313,18 @@
     });
   }
 
+  /* ——— /registracia/: vybraný track z URL ——— */
+  function initRegistration() {
+    const badge = document.querySelector("[data-track-badge]");
+    const tracks = { english: "English track", sports: "Sports track" };
+    const track = tracks[new URLSearchParams(location.search).get("track")];
+    if (badge && track) {
+      badge.innerHTML = `Vybral/a si si <strong>${track}</strong> – nezabudni si ho vybrať aj v&nbsp;prihláške.`;
+      badge.hidden = false;
+    }
+  }
+
+  initRegistration();
   initPhotoMarquees();
   initStack();
   initVideo();

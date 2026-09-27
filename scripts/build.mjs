@@ -2,15 +2,19 @@
 //   npm run build   – jednorazový build (minifikované CSS)
 //   npm run dev     – build + sledovanie zmien + lokálny server
 import { spawn, spawnSync } from "node:child_process";
-import { cpSync, existsSync, mkdirSync, readFileSync, rmSync, watch, writeFileSync } from "node:fs";
+import { cpSync, mkdirSync, readdirSync, readFileSync, rmSync, watch, writeFileSync } from "node:fs";
 import { dirname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 
-// Adresa, na ktorej stránka pobeží (canonical, OG, sitemap). Zmeň pred nasadením, ak je iná.
-const SITE_URL = "https://kecy.ecavza.sk";
-// Kam vedú tlačidlá „Registrácia“. Tracky pridávajú ?track=english / ?track=sports,
-// takže keď bude /registracia/, stačí sem dať "/registracia/" a formulár si track prečíta z URL.
-const REGISTER_URL = "#";
+// Adresa, na ktorej stránka pobeží (canonical, OG, sitemap). GitHub Action ju nastaví sama podľa GitHub Pages.
+const SITE_URL = (process.env.SITE_URL || "https://kecy.ecavza.sk").replace(/\/$/, "");
+// Podcesta, ak web nebeží v koreni domény (napr. GitHub Pages bez vlastnej domény: /kecy26). Inak prázdne.
+const BASE_PATH = (process.env.BASE_PATH || "").replace(/\/$/, "");
+// Kam vedú tlačidlá „Registrácia“ na hlavnej stránke (tracky pridávajú ?track=english / ?track=sports).
+const REGISTER_URL = "/registracia/";
+// Externá prihláška (napr. emsreg.eu), na ktorú vedie tlačidlo na konci stránky /registracia/.
+// Keď bude link na KECY 2027, stačí ho vložiť sem.
+const FORM_URL = "https://emsreg.eu/public_otm/events/16861/registrations/landing_page"; // zatiaľ prihláška 2026
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const src = join(root, "src");
@@ -38,17 +42,27 @@ function copyStatic() {
   for (const [name, from] of Object.entries(fonts)) {
     cpSync(join(root, "node_modules", from), join(dist, "assets/fonts", name));
   }
-  // placeholdery v HTML/XML/TXT
-  for (const file of ["index.html", "robots.txt", "sitemap.xml"]) {
+  // placeholdery vo všetkých HTML/XML/TXT súboroch (aj v podstránkach)
+  const files = readdirSync(dist, { recursive: true }).filter((f) => /\.(html|xml|txt)$/.test(f));
+  for (const file of files) {
     const p = join(dist, file);
-    if (!existsSync(p)) continue;
-    writeFileSync(p, readFileSync(p, "utf8").replaceAll("%SITE_URL%", SITE_URL).replaceAll("%REGISTER_URL%", REGISTER_URL).replaceAll("%BUILD%", buildId));
+    let text = readFileSync(p, "utf8");
+    // absolútne cesty („/assets/…“, „/registracia/“, „/“) doplníme o podcestu
+    if (BASE_PATH && file.endsWith(".html")) text = text.replace(/(href="|src="|srcset="|data-full="|, )\/(?!\/)/g, `$1${BASE_PATH}/`);
+    writeFileSync(
+      p,
+      text
+        .replaceAll("%SITE_URL%", SITE_URL)
+        .replaceAll("%REGISTER_URL%", REGISTER_URL.startsWith("/") ? BASE_PATH + REGISTER_URL : REGISTER_URL)
+        .replaceAll("%FORM_URL%", FORM_URL)
+        .replaceAll("%BUILD%", buildId),
+    );
   }
 }
 
 const twArgs = ["@tailwindcss/cli", "-i", "src/css/main.css", "-o", "dist/assets/css/main.css"];
 
-rmSync(dist, { recursive: true, force: true });
+rmSync(dist, { recursive: true, force: true, maxRetries: 5, retryDelay: 100 });
 copyStatic();
 
 if (!watchMode) {

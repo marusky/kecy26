@@ -3,6 +3,7 @@ import { createServer } from "node:http";
 import { existsSync, readFileSync, statSync } from "node:fs";
 import { extname, join, normalize } from "node:path";
 import { dirname } from "node:path";
+import { networkInterfaces } from "node:os";
 import { fileURLToPath } from "node:url";
 
 const dist = join(dirname(fileURLToPath(import.meta.url)), "..", "dist");
@@ -32,4 +33,9 @@ createServer((req, res) => {
   }
   res.writeHead(200, { "content-type": types[extname(file)] ?? "application/octet-stream", "cache-control": "no-store" });
   res.end(readFileSync(file));
-}).listen(port, () => console.log(`→ http://localhost:${port}`));
+}).listen(port, "0.0.0.0", () => {
+  console.log(`→ http://localhost:${port}`);
+  // adresa pre telefón na rovnakej wifi
+  for (const nets of Object.values(networkInterfaces()))
+    for (const n of nets ?? []) if (n.family === "IPv4" && !n.internal) console.log(`→ http://${n.address}:${port}  (telefón na rovnakej wifi)`);
+});

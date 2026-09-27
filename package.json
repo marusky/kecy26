@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "node scripts/build.mjs --watch",
     "build": "node scripts/build.mjs",
-    "preview": "node scripts/serve.mjs"
+    "preview": "node scripts/serve.mjs",
+    "photos": "sh scripts/photos.sh"
   },
   "author": "",
   "license": "ISC",

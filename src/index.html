@@ -92,13 +92,13 @@
     <div class="overflow-x-clip bg-paper">
       <!-- ============ HERO ============ -->
       <header class="relative bg-lime">
-        <div class="shell pt-[5.6875rem] lg:grid lg:grid-cols-[1.1fr_1fr] lg:items-end lg:gap-x-12 lg:pt-16 lg:pb-12">
-          <p class="text-center text-xl md:text-2xl lg:col-start-1 lg:text-left">
+        <div class="shell pt-[5.875rem] md:pt-[5.6875rem] lg:grid lg:grid-cols-[1.1fr_1fr] lg:items-end lg:gap-x-20 lg:px-6 lg:pt-16 lg:pb-12 xl:gap-x-28 xl:px-4">
+          <p class="hidden text-center text-xl md:block md:text-2xl lg:col-start-1 lg:text-left">
             <time datetime="2027">Leto 2027</time>
           </p>
 
           <!-- veľkosť chlapíka je v em → drží pomer k nadpisu na každom rozlíšení -->
-          <div class="relative mt-9 w-fit font-display text-[clamp(3.25rem,16vw,4.25rem)] md:mt-12 md:text-[6.5rem] lg:col-start-1 lg:mt-8 lg:text-[clamp(5.5rem,8.4vw,8.5rem)]">
+          <div class="relative mt-0 w-fit font-display text-[clamp(3.25rem,16vw,4.25rem)] md:mt-12 md:text-[6.5rem] lg:col-start-1 lg:mt-8 lg:text-[clamp(5.5rem,8.4vw,8.5rem)]">
             <h1 class="leading-[0.92] font-extrabold tracking-[-0.02em] uppercase md:whitespace-nowrap">
               <span class="sr-only">KECY Žilina 2027 – </span>English <br />camp for <br />youth
             </h1>
@@ -116,23 +116,29 @@
             Anglicko-konverzačný tábor pre&nbsp;ôsmakov, deviatakov a&nbsp;stredoškolákov, organizovaný mladými kresťanmi zo&nbsp;Žiliny.
           </p>
 
-          <!-- mobil: tvar z Figmy (baby sedia na tlačidle); desktop: nálepka s bielou zo všetkých strán -->
+          <!-- mobil: „dievcata“ (sedia na tlačidle), desktop: „dievcata okraj“ (nálepka s bielou zo všetkých strán) – komponenty z Figmy -->
           <div
-            class="relative mx-auto mt-8 aspect-[243.5/138.5] w-[15.21875rem] md:mt-12 md:w-[22rem] lg:col-start-2 lg:row-span-4 lg:row-start-1 lg:mt-0 lg:aspect-[250/160] lg:w-full lg:max-w-[40rem] lg:-rotate-2 lg:self-center"
+            class="relative mx-auto mt-8 w-[15.21875rem] md:mt-12 md:w-[22rem] lg:col-start-2 lg:row-span-4 lg:row-start-1 lg:mt-0 lg:w-full lg:max-w-[40rem] lg:-rotate-2 lg:self-center"
           >
-            <svg viewBox="0 0 243.5 138.5" class="absolute inset-0 size-full lg:hidden" aria-hidden="true" focusable="false">
-              <path d="M0 88V138.5H211.5L206 120L219.5 101L243.5 76L229.5 49L160 36.5L149 7L93 0L53.5 17.5L41.5 45L12 63L0 88Z" fill="#fff" />
-            </svg>
-            <svg viewBox="0 0 250 160" class="absolute inset-0 hidden size-full drop-shadow-[6px_6px_0_var(--color-ink)] lg:block" aria-hidden="true" focusable="false">
-              <path d="M4 96L0 128L10 158L120 154L236 160L246 130L238 104L250 78L234 50L166 38L154 8L98 0L58 16L46 44L16 62Z" fill="#fff" />
-            </svg>
             <img
-              src="/assets/img/hero-girls.webp"
+              src="/assets/img/hero-girls-720.webp"
+              srcset="/assets/img/hero-girls-720.webp 720w, /assets/img/hero-girls-1440.webp 1440w"
+              sizes="(min-width: 48rem) 22rem, 15.25rem"
               alt="Dve usmiate účastníčky tábora ukazujú palce hore"
-              width="215"
-              height="126"
-              class="absolute bottom-0 left-[4.93%] h-[90.97%] w-[88.3%] lg:top-[7.5%] lg:bottom-auto lg:left-[6.4%] lg:h-[78.75%] lg:w-[86%]"
+              width="720"
+              height="408"
+              class="block h-auto w-full lg:hidden"
               fetchpriority="high"
+            />
+            <img
+              src="/assets/img/hero-girls-okraj-1440.webp"
+              srcset="/assets/img/hero-girls-okraj-720.webp 720w, /assets/img/hero-girls-okraj-1440.webp 1440w"
+              sizes="40rem"
+              alt="Dve usmiate účastníčky tábora ukazujú palce hore"
+              width="1440"
+              height="883"
+              loading="lazy"
+              class="hidden h-auto w-full lg:block"
             />
           </div>
 
@@ -205,26 +211,76 @@
             <h2 id="english-track-title">
               <a href="#english-track" class="tab__link font-display text-[2.125rem] leading-none font-extrabold uppercase md:text-5xl lg:text-6xl">English track</a>
             </h2>
-            <div class="marquee" data-gallery data-marquee style="--dur: 38s" role="region" aria-label="Fotky z English tracku">
+            <div class="marquee" data-gallery data-marquee role="region" aria-label="Fotky z English tracku">
               <ul class="marquee__track">
                 <li class="marquee__item">
-                  <button type="button" class="marquee__btn" data-lb>
-                    <img src="/assets/img/english-1.webp" alt="Účastníci tábora sa rozprávajú pri stole v altánku, v popredí americké sladkosti" width="800" height="451" loading="lazy" class="marquee__img" />
+                  <button type="button" class="marquee__btn" data-lb data-full="/assets/img/photos/english-1-2400.webp">
+                    <img
+                      src="/assets/img/photos/english-1-640.webp"
+                      srcset="/assets/img/photos/english-1-640.webp 640w, /assets/img/photos/english-1-1280.webp 1280w"
+                      sizes="(min-width: 64rem) 32rem, (min-width: 48rem) 24rem, 17rem"
+                      alt="Účastníci a Američan sa rozprávajú pri stole v záhradnom altánku, na stole americké sladkosti"
+                      width="640"
+                      height="360"
+                      loading="lazy"
+                      class="marquee__img"
+                    />
                   </button>
                 </li>
                 <li class="marquee__item">
-                  <button type="button" class="marquee__btn" data-lb>
-                    <img src="/assets/img/english-2.webp" alt="Usmiata účastníčka sa rozpráva s kamarátom pred drevenou stenou s fotkami" width="799" height="533" loading="lazy" class="marquee__img" />
+                  <button type="button" class="marquee__btn" data-lb data-full="/assets/img/photos/english-2-2400.webp">
+                    <img
+                      src="/assets/img/photos/english-2-640.webp"
+                      srcset="/assets/img/photos/english-2-640.webp 640w, /assets/img/photos/english-2-1280.webp 1280w"
+                      sizes="(min-width: 64rem) 32rem, (min-width: 48rem) 24rem, 17rem"
+                      alt="Dve usmiate účastníčky píšu fixkou počas aktivity"
+                      width="640"
+                      height="360"
+                      loading="lazy"
+                      class="marquee__img"
+                    />
                   </button>
                 </li>
                 <li class="marquee__item">
-                  <button type="button" class="marquee__btn" data-lb>
-                    <img src="/assets/img/photo-1.webp" alt="Účastníci sa rozprávajú v drevenej chate s fotkami na stene" width="799" height="533" loading="lazy" class="marquee__img" />
+                  <button type="button" class="marquee__btn" data-lb data-full="/assets/img/photos/english-3-2400.webp">
+                    <img
+                      src="/assets/img/photos/english-3-640.webp"
+                      srcset="/assets/img/photos/english-3-640.webp 640w, /assets/img/photos/english-3-1280.webp 1280w"
+                      sizes="(min-width: 64rem) 32rem, (min-width: 48rem) 24rem, 17rem"
+                      alt="Účastníci sústredene píšu pri stole pri okne"
+                      width="640"
+                      height="360"
+                      loading="lazy"
+                      class="marquee__img"
+                    />
                   </button>
                 </li>
                 <li class="marquee__item">
-                  <button type="button" class="marquee__btn" data-lb>
-                    <img src="/assets/img/photo-4.webp" alt="Ruky držia mobil a tablet s nakreslenými rukami počas hry" width="799" height="533" loading="lazy" class="marquee__img" />
+                  <button type="button" class="marquee__btn" data-lb data-full="/assets/img/photos/english-4-2400.webp">
+                    <img
+                      src="/assets/img/photos/english-4-640.webp"
+                      srcset="/assets/img/photos/english-4-640.webp 640w, /assets/img/photos/english-4-1280.webp 1280w"
+                      sizes="(min-width: 64rem) 32rem, (min-width: 48rem) 24rem, 17rem"
+                      alt="Skupinka mladých sa rozpráva pri stoloch s károvanými obrusmi v jedálni"
+                      width="640"
+                      height="360"
+                      loading="lazy"
+                      class="marquee__img"
+                    />
+                  </button>
+                </li>
+                <li class="marquee__item">
+                  <button type="button" class="marquee__btn" data-lb data-full="/assets/img/photos/english-5-2400.webp">
+                    <img
+                      src="/assets/img/photos/english-5-640.webp"
+                      srcset="/assets/img/photos/english-5-640.webp 640w, /assets/img/photos/english-5-1280.webp 1280w"
+                      sizes="(min-width: 64rem) 32rem, (min-width: 48rem) 24rem, 17rem"
+                      alt="Účastníci pracujú na zadaní pri stole plnom fixiek a sladkostí"
+                      width="640"
+                      height="360"
+                      loading="lazy"
+                      class="marquee__img"
+                    />
                   </button>
                 </li>
               </ul>
@@ -236,7 +292,7 @@
               odnesieš aj americké sladkosti.
             </p>
             <div>
-              <a href="%REGISTER_URL%?track=english" class="btn-cta" style="--cta: var(--color-pink)"><span lang="en">English it is</span><span class="sr-only"> – registrácia na English track</span> <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
+              <a href="%REGISTER_URL%?track=english" class="btn-cta" style="--cta: var(--color-blue)"><span lang="en">English it is</span><span class="sr-only"> – registrácia na English track</span> <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
             </div>
             </div>
           </section>
@@ -245,21 +301,76 @@
             <h2 id="sports-track-title">
               <a href="#sports-track" class="tab__link font-display text-[2.125rem] leading-none font-extrabold uppercase md:text-5xl lg:text-6xl">Sports track</a>
             </h2>
-            <div class="marquee" data-gallery data-marquee style="--dur: 30s" role="region" aria-label="Fotky zo Sports tracku">
+            <div class="marquee" data-gallery data-marquee role="region" aria-label="Fotky zo Sports tracku">
               <ul class="marquee__track">
                 <li class="marquee__item">
-                  <button type="button" class="marquee__btn" data-lb>
-                    <img src="/assets/img/sports-1.webp" alt="Účastníci tábora pri americkom športe s Američanmi" width="800" height="533" loading="lazy" class="marquee__img" />
+                  <button type="button" class="marquee__btn" data-lb data-full="/assets/img/photos/sports-1-2400.webp">
+                    <img
+                      src="/assets/img/photos/sports-1-640.webp"
+                      srcset="/assets/img/photos/sports-1-640.webp 640w, /assets/img/photos/sports-1-1280.webp 1280w"
+                      sizes="(min-width: 64rem) 32rem, (min-width: 48rem) 24rem, 17rem"
+                      alt="Účastníčky si na ihrisku prihrávajú loptu na americký futbal"
+                      width="640"
+                      height="360"
+                      loading="lazy"
+                      class="marquee__img"
+                    />
                   </button>
                 </li>
                 <li class="marquee__item">
-                  <button type="button" class="marquee__btn" data-lb>
-                    <img src="/assets/img/sports-2.webp" alt="Tím účastníkov počas tréningu na ihrisku" width="800" height="533" loading="lazy" class="marquee__img" />
+                  <button type="button" class="marquee__btn" data-lb data-full="/assets/img/photos/sports-2-2400.webp">
+                    <img
+                      src="/assets/img/photos/sports-2-640.webp"
+                      srcset="/assets/img/photos/sports-2-640.webp 640w, /assets/img/photos/sports-2-1280.webp 1280w"
+                      sizes="(min-width: 64rem) 32rem, (min-width: 48rem) 24rem, 17rem"
+                      alt="Tréner a hráči sa po nevydarenej akcii chytajú za hlavu"
+                      width="640"
+                      height="360"
+                      loading="lazy"
+                      class="marquee__img"
+                    />
                   </button>
                 </li>
                 <li class="marquee__item">
-                  <button type="button" class="marquee__btn" data-lb>
-                    <img src="/assets/img/sports-3.webp" alt="Hra frisbee na lúke počas tábora" width="800" height="533" loading="lazy" class="marquee__img" />
+                  <button type="button" class="marquee__btn" data-lb data-full="/assets/img/photos/sports-3-2400.webp">
+                    <img
+                      src="/assets/img/photos/sports-3-640.webp"
+                      srcset="/assets/img/photos/sports-3-640.webp 640w, /assets/img/photos/sports-3-1280.webp 1280w"
+                      sizes="(min-width: 64rem) 32rem, (min-width: 48rem) 24rem, 17rem"
+                      alt="Hráči vyskakujú za frisbee počas zápasu na ihrisku"
+                      width="640"
+                      height="360"
+                      loading="lazy"
+                      class="marquee__img"
+                    />
+                  </button>
+                </li>
+                <li class="marquee__item">
+                  <button type="button" class="marquee__btn" data-lb data-full="/assets/img/photos/sports-4-2400.webp">
+                    <img
+                      src="/assets/img/photos/sports-4-640.webp"
+                      srcset="/assets/img/photos/sports-4-640.webp 640w, /assets/img/photos/sports-4-1280.webp 1280w"
+                      sizes="(min-width: 64rem) 32rem, (min-width: 48rem) 24rem, 17rem"
+                      alt="Chalan v slnečných okuliaroch na ihrisku pred zeleným plotom"
+                      width="640"
+                      height="360"
+                      loading="lazy"
+                      class="marquee__img"
+                    />
+                  </button>
+                </li>
+                <li class="marquee__item">
+                  <button type="button" class="marquee__btn" data-lb data-full="/assets/img/photos/sports-5-2400.webp">
+                    <img
+                      src="/assets/img/photos/sports-5-640.webp"
+                      srcset="/assets/img/photos/sports-5-640.webp 640w, /assets/img/photos/sports-5-1280.webp 1280w"
+                      sizes="(min-width: 64rem) 32rem, (min-width: 48rem) 24rem, 17rem"
+                      alt="Zápas na ihrisku medzi zelenými kopcami"
+                      width="640"
+                      height="360"
+                      loading="lazy"
+                      class="marquee__img"
+                    />
                   </button>
                 </li>
               </ul>
@@ -280,21 +391,118 @@
             <h2 id="program-title">
               <a href="#program" class="tab__link font-display text-[2.125rem] leading-none font-extrabold uppercase md:text-5xl lg:text-6xl">Program</a>
             </h2>
-            <div class="marquee" data-gallery data-marquee style="--dur: 34s" role="region" aria-label="Fotky z programu">
+            <div class="marquee" data-gallery data-marquee role="region" aria-label="Fotky z programu">
               <ul class="marquee__track">
                 <li class="marquee__item">
-                  <button type="button" class="marquee__btn" data-lb>
-                    <img src="/assets/img/photo-5.webp" alt="Skupinka mladých sa rozpráva pri stoloch v jedálni" width="799" height="533" loading="lazy" class="marquee__img" />
+                  <button type="button" class="marquee__btn" data-lb data-full="/assets/img/photos/program-1-2400.webp">
+                    <img
+                      src="/assets/img/photos/program-1-640.webp"
+                      srcset="/assets/img/photos/program-1-640.webp 640w, /assets/img/photos/program-1-1280.webp 1280w"
+                      sizes="(min-width: 64rem) 32rem, (min-width: 48rem) 24rem, 17rem"
+                      alt="Večerná diskotéka pod farebnými vlajočkami a svetielkami"
+                      width="640"
+                      height="360"
+                      loading="lazy"
+                      class="marquee__img"
+                    />
                   </button>
                 </li>
                 <li class="marquee__item">
-                  <button type="button" class="marquee__btn" data-lb>
-                    <img src="/assets/img/photo-3.webp" alt="Účastníčka v okuliaroch drží balíček amerických cukríkov pri stole s károvaným obrusom" width="799" height="533" loading="lazy" class="marquee__img" />
+                  <button type="button" class="marquee__btn" data-lb data-full="/assets/img/photos/program-2-2400.webp">
+                    <img
+                      src="/assets/img/photos/program-2-640.webp"
+                      srcset="/assets/img/photos/program-2-640.webp 640w, /assets/img/photos/program-2-1280.webp 1280w"
+                      sizes="(min-width: 64rem) 32rem, (min-width: 48rem) 24rem, 17rem"
+                      alt="Súboj s penovými tyčami na lúke počas poobedných hier"
+                      width="640"
+                      height="360"
+                      loading="lazy"
+                      class="marquee__img"
+                    />
                   </button>
                 </li>
                 <li class="marquee__item">
-                  <button type="button" class="marquee__btn" data-lb>
-                    <img src="/assets/img/photo-2.webp" alt="Chalan zapisuje niečo na podložku, vedľa neho sa pozerá kamarátka" width="799" height="533" loading="lazy" class="marquee__img" />
+                  <button type="button" class="marquee__btn" data-lb data-full="/assets/img/photos/program-4-2400.webp">
+                    <img
+                      src="/assets/img/photos/program-4-640.webp"
+                      srcset="/assets/img/photos/program-4-640.webp 640w, /assets/img/photos/program-4-1280.webp 1280w"
+                      sizes="(min-width: 64rem) 32rem, (min-width: 48rem) 24rem, 17rem"
+                      alt="Usmiate účastníčky pri stole na lúke počas tvorivej dielne"
+                      width="640"
+                      height="360"
+                      loading="lazy"
+                      class="marquee__img"
+                    />
+                  </button>
+                </li>
+                <li class="marquee__item">
+                  <button type="button" class="marquee__btn" data-lb data-full="/assets/img/photos/program-5-2400.webp">
+                    <img
+                      src="/assets/img/photos/program-5-640.webp"
+                      srcset="/assets/img/photos/program-5-640.webp 640w, /assets/img/photos/program-5-1280.webp 1280w"
+                      sizes="(min-width: 64rem) 32rem, (min-width: 48rem) 24rem, 17rem"
+                      alt="Večerný program: dvaja rečníci hovoria k účastníkom sediacim v kruhu"
+                      width="640"
+                      height="360"
+                      loading="lazy"
+                      class="marquee__img"
+                    />
+                  </button>
+                </li>
+                <li class="marquee__item">
+                  <button type="button" class="marquee__btn" data-lb data-full="/assets/img/photos/program-6-2400.webp">
+                    <img
+                      src="/assets/img/photos/program-6-640.webp"
+                      srcset="/assets/img/photos/program-6-640.webp 640w, /assets/img/photos/program-6-1280.webp 1280w"
+                      sizes="(min-width: 64rem) 32rem, (min-width: 48rem) 24rem, 17rem"
+                      alt="Ruky napínajú šnúrky počas tímovej hry s bludiskom"
+                      width="640"
+                      height="360"
+                      loading="lazy"
+                      class="marquee__img"
+                    />
+                  </button>
+                </li>
+                <li class="marquee__item">
+                  <button type="button" class="marquee__btn" data-lb data-full="/assets/img/photos/program-7-2400.webp">
+                    <img
+                      src="/assets/img/photos/program-7-640.webp"
+                      srcset="/assets/img/photos/program-7-640.webp 640w, /assets/img/photos/program-7-1280.webp 1280w"
+                      sizes="(min-width: 64rem) 32rem, (min-width: 48rem) 24rem, 17rem"
+                      alt="Účastníčky v šatkách a okuliaroch pózujú pri stole v jedálni"
+                      width="640"
+                      height="360"
+                      loading="lazy"
+                      class="marquee__img"
+                    />
+                  </button>
+                </li>
+                <li class="marquee__item">
+                  <button type="button" class="marquee__btn" data-lb data-full="/assets/img/photos/program-8-2400.webp">
+                    <img
+                      src="/assets/img/photos/program-8-640.webp"
+                      srcset="/assets/img/photos/program-8-640.webp 640w, /assets/img/photos/program-8-1280.webp 1280w"
+                      sizes="(min-width: 64rem) 32rem, (min-width: 48rem) 24rem, 17rem"
+                      alt="Rozhovor na pódiu počas večerného programu v sále so svetielkami"
+                      width="640"
+                      height="360"
+                      loading="lazy"
+                      class="marquee__img"
+                    />
+                  </button>
+                </li>
+                <li class="marquee__item">
+                  <button type="button" class="marquee__btn" data-lb data-full="/assets/img/photos/program-9-2400.webp">
+                    <img
+                      src="/assets/img/photos/program-9-640.webp"
+                      srcset="/assets/img/photos/program-9-640.webp 640w, /assets/img/photos/program-9-1280.webp 1280w"
+                      sizes="(min-width: 64rem) 32rem, (min-width: 48rem) 24rem, 17rem"
+                      alt="Účastníci sledujú premietanie na plátne vo vyzdobenej sále"
+                      width="640"
+                      height="360"
+                      loading="lazy"
+                      class="marquee__img"
+                    />
                   </button>
                 </li>
               </ul>
@@ -314,10 +522,10 @@
          <div class="shell lg:grid lg:grid-cols-[1fr_1.35fr] lg:items-start lg:gap-16">
           <div class="lg:sticky lg:top-24">
             <h2 id="testimonials-title" class="font-display text-[2.125rem] leading-[1.05] font-extrabold uppercase md:text-5xl lg:text-6xl xl:text-7xl">
-              “Come to KECY” <br />they said
+              <span class="text-blue [-webkit-text-stroke:1.5px_var(--color-ink)] [paint-order:stroke_fill]">“Come to KECY”</span> <br />they said
             </h2>
             <p class="mt-4 font-display text-xl leading-[1.05] font-extrabold uppercase md:text-2xl lg:mt-8 lg:text-4xl xl:text-5xl">
-              <span class="text-lime [-webkit-text-stroke:3px_var(--color-ink)] [paint-order:stroke_fill] [text-shadow:3px_3px_0_var(--color-ink)]">“It actually is fun!”</span><br />they said
+              <span class="text-pink [-webkit-text-stroke:1.5px_var(--color-ink)] [paint-order:stroke_fill]">“It actually is fun!”</span><br />they said
             </p>
           </div>
 
@@ -341,19 +549,7 @@
                 data-color="var(--color-pink)"
               >
                 <span class="sr-only">Jaylin</span>
-                <span class="relative block h-[6.625rem]">
-                  <svg viewBox="0 0 126 100.5" class="absolute inset-0 size-full" aria-hidden="true" preserveAspectRatio="none">
-                    <path d="M19 60.5L0 77.5L18.9649 100.5H126L118.5 77.5L101 60.5L111 43L101 30L96.5 0H65.5L23.5 12.5L31 36L19 60.5Z" fill="#D9FC3A" />
-                  </svg>
-                  <img
-                    src="/assets/img/head-jaylin.webp"
-                    alt=""
-                    width="358"
-                    height="300"
-                    loading="lazy"
-                    class="absolute top-[0.6875rem] left-[12.6%] w-[77%]"
-                  />
-                </span>
+                <img src="/assets/img/head-jaylin.webp" alt="" width="480" height="454" loading="lazy" class="block h-auto w-full" />
               </button>
               <button
                 type="button"
@@ -366,22 +562,7 @@
                 data-color="var(--color-green)"
               >
                 <span class="sr-only">Rišo</span>
-                <span class="relative block h-[7rem]">
-                  <svg viewBox="0 0 123 112" class="absolute inset-0 size-full" aria-hidden="true" preserveAspectRatio="none">
-                    <path
-                      d="M123 112H0L6.97872 79.3152L34.0213 61.8833L20.0638 43.144V19.6109L45.3617 0L81.5638 6.10117L91.1596 43.144L84.617 61.8833L116.894 76.2646L123 112Z"
-                      fill="#767CFB"
-                    />
-                  </svg>
-                  <img
-                    src="/assets/img/head-riso.webp"
-                    alt=""
-                    width="214"
-                    height="189"
-                    loading="lazy"
-                    class="absolute top-[9.82%] left-[6.9%] w-[86.6%]"
-                  />
-                </span>
+                <img src="/assets/img/head-riso.webp" alt="" width="460" height="419" loading="lazy" class="block h-auto w-full" />
               </button>
               <button
                 type="button"
@@ -394,19 +575,7 @@
                 data-color="var(--color-lime)"
               >
                 <span class="sr-only">Šárka</span>
-                <span class="relative block h-[6.78rem]">
-                  <svg viewBox="0 0 132 108.5" class="absolute inset-0 size-full" aria-hidden="true" preserveAspectRatio="none">
-                    <path d="M132 108.5H0L8 80.5L20 74L18 43.5L27 13L55.5 0L83.5 7L95.5 38L97.5 64L109 66L125.5 78L132 108.5Z" fill="#52E88B" />
-                  </svg>
-                  <img
-                    src="/assets/img/head-sarka.webp"
-                    alt=""
-                    width="350"
-                    height="269"
-                    loading="lazy"
-                    class="absolute top-[0.59rem] left-[5.3%] w-[90.9%]"
-                  />
-                </span>
+                <img src="/assets/img/head-sarka.webp" alt="" width="500" height="447" loading="lazy" class="block h-auto w-full" />
               </button>
             </div>
 
@@ -445,58 +614,68 @@
 
           <ul class="mt-10 grid grid-cols-2 gap-x-5 md:gap-x-8 lg:mt-14 lg:grid-cols-4" data-gallery data-gallery-ordered>
             <li class="flex flex-col gap-[1.625rem] md:gap-8">
-              <button type="button" data-lb class="photo-btn aspect-[167/111]" style="--c: var(--color-lime)" data-index="0">
+              <button type="button" data-lb class="photo-btn aspect-[167/111]" style="--c: var(--color-lime)" data-index="0" data-full="/assets/img/photos/fotky-2-2400.webp">
                 <img
-                  src="/assets/img/photo-1.webp"
-                  alt="Účastníci sa rozprávajú v drevenej chate s fotkami na stene"
-                  width="799"
-                  height="533"
+                  src="/assets/img/photos/fotky-2-640.webp"
+                  srcset="/assets/img/photos/fotky-2-640.webp 640w, /assets/img/photos/fotky-2-1280.webp 1280w"
+                  sizes="(min-width: 64rem) 20rem, (min-width: 48rem) 21rem, 50vw"
+                  alt="Účastníci s ruksakmi na výlete cez dedinu"
+                  width="640"
+                  height="360"
                   loading="lazy"
-                  class="size-full object-cover"
+                  class="size-full object-cover "
                 />
               </button>
-              <button type="button" data-lb class="photo-btn aspect-[167/225]" style="--c: var(--color-pink)" data-index="2">
+              <button type="button" data-lb class="photo-btn aspect-[167/225]" style="--c: var(--color-pink)" data-index="2" data-full="/assets/img/photos/fotky-5-2400.webp">
                 <img
-                  src="/assets/img/photo-3.webp"
-                  alt="Účastníčka v okuliaroch drží balíček amerických cukríkov pri stole s károvaným obrusom"
-                  width="799"
-                  height="533"
+                  src="/assets/img/photos/fotky-5-640.webp"
+                  srcset="/assets/img/photos/fotky-5-640.webp 640w, /assets/img/photos/fotky-5-1280.webp 1280w"
+                  sizes="(min-width: 64rem) 20rem, (min-width: 48rem) 21rem, 50vw"
+                  alt="Vedúci s veľkou hracou kockou vysvetľuje hru skupine účastníkov"
+                  width="640"
+                  height="360"
                   loading="lazy"
-                  class="size-full object-cover"
+                  class="size-full object-cover "
                 />
               </button>
             </li>
             <li class="flex flex-col gap-[1.625rem] md:gap-8">
-              <button type="button" data-lb class="photo-btn aspect-[166/228]" style="--c: var(--color-green)" data-index="1">
+              <button type="button" data-lb class="photo-btn aspect-[166/228]" style="--c: var(--color-green)" data-index="1" data-full="/assets/img/photos/fotky-3-2400.webp">
                 <img
-                  src="/assets/img/photo-2.webp"
-                  alt="Chalan zapisuje niečo na podložku, vedľa neho sa pozerá kamarátka"
-                  width="799"
-                  height="533"
+                  src="/assets/img/photos/fotky-3-640.webp"
+                  srcset="/assets/img/photos/fotky-3-640.webp 640w, /assets/img/photos/fotky-3-1280.webp 1280w"
+                  sizes="(min-width: 64rem) 20rem, (min-width: 48rem) 21rem, 50vw"
+                  alt="Chalan s americkou vlajočkou v ústach a účastníčka pod americkými vlajkami"
+                  width="640"
+                  height="360"
                   loading="lazy"
-                  class="size-full object-cover object-[53%_50%]"
+                  class="size-full object-cover object-[42%_50%]"
                 />
               </button>
-              <button type="button" data-lb class="photo-btn aspect-[167/112]" style="--c: var(--color-lime)" data-index="3">
+              <button type="button" data-lb class="photo-btn aspect-[167/112]" style="--c: var(--color-lime)" data-index="3" data-full="/assets/img/photos/fotky-4-2400.webp">
                 <img
-                  src="/assets/img/photo-4.webp"
-                  alt="Ruky držia mobil a tablet s nakreslenými rukami počas hry"
-                  width="799"
-                  height="533"
+                  src="/assets/img/photos/fotky-4-640.webp"
+                  srcset="/assets/img/photos/fotky-4-640.webp 640w, /assets/img/photos/fotky-4-1280.webp 1280w"
+                  sizes="(min-width: 64rem) 20rem, (min-width: 48rem) 21rem, 50vw"
+                  alt="Účastníci sa skláňajú nad hracou plochou pri tímovej hre"
+                  width="640"
+                  height="360"
                   loading="lazy"
-                  class="size-full object-cover"
+                  class="size-full object-cover "
                 />
               </button>
             </li>
             <li class="col-span-2 mt-[1.1875rem] md:mt-8 lg:mt-0">
-              <button type="button" data-lb class="photo-btn aspect-[354/236] lg:aspect-auto" style="--c: var(--color-blue)" data-index="4">
+              <button type="button" data-lb class="photo-btn aspect-[354/236] lg:aspect-auto" style="--c: var(--color-blue)" data-index="4" data-full="/assets/img/photos/fotky-1-2400.webp">
                 <img
-                  src="/assets/img/photo-5.webp"
-                  alt="Skupinka mladých sa rozpráva pri stoloch v jedálni"
-                  width="799"
-                  height="533"
+                  src="/assets/img/photos/fotky-1-640.webp"
+                  srcset="/assets/img/photos/fotky-1-640.webp 640w, /assets/img/photos/fotky-1-1280.webp 1280w"
+                  sizes="(min-width: 64rem) 40rem, (min-width: 48rem) 42rem, 100vw"
+                  alt="Spoločná fotka všetkých účastníkov a vedúcich pred chatou"
+                  width="640"
+                  height="427"
                   loading="lazy"
-                  class="size-full object-cover"
+                  class="size-full object-cover "
                 />
               </button>
             </li>
@@ -504,7 +683,7 @@
 
           <p class="mt-8 text-center">
             <a
-              href="https://www.flickr.com/photos/143502129@N04/"
+              href="https://www.flickr.com/photos/ecavza/albums/72177720335709295"
               class="inline-flex min-h-11 items-center gap-1 underline-offset-4 hover:underline"
               target="_blank"
               rel="noopener"
@@ -581,33 +760,21 @@
 
             <ul class="mt-10 grid grid-cols-2 gap-2 text-center md:mt-0 md:gap-8">
               <li>
-            <div class="relative mx-auto h-[6.3125rem] w-[7.3125rem]">
-              <svg viewBox="0 0 117 101" class="absolute inset-0 size-full -scale-x-100" aria-hidden="true" preserveAspectRatio="none">
-                <path
-                  d="M0 101H117V60.2868L87.1531 46.9767L91.9286 32.8837L88.7449 5.48062L46.9592 0L14.7245 16.8333L27.0612 46.9767L3.58163 64.9845L0 101Z"
-                  fill="#767CFB"
-                />
-              </svg>
-              <img src="/assets/img/contact-lukas.webp" alt="" width="451" height="398" loading="lazy" class="absolute top-[0.4375rem] left-[8.16%] w-[83.7%]" />
-            </div>
-            <p class="mt-6 text-xl font-bold">Lukáš Kopún</p>
-            <p class="text-xl"><a href="tel:+421903350450" class="hover:underline">0903 350 450</a></p>
-            <p class="mt-4 text-sm">vedúci campu</p>
-          </li>
-          <li>
-            <div class="relative mx-auto h-[6.1875rem] w-[7.1875rem]">
-              <svg viewBox="0 0 115 99" class="absolute inset-0 size-full" aria-hidden="true" preserveAspectRatio="none">
-                <path
-                  d="M0 99H115V59.093L85.6633 46.0465L90.3571 32.2326L87.2279 5.37209L46.1565 0L14.4728 16.5L26.5986 46.0465L3.52041 63.6977L0 99Z"
-                  fill="#52E88B"
-                />
-              </svg>
-              <img src="/assets/img/contact-evka.webp" alt="" width="451" height="398" loading="lazy" class="absolute top-[0.4375rem] left-[8.16%] w-[83.7%]" />
-            </div>
-            <p class="mt-6 text-xl font-bold">Evka Belancová</p>
-            <p class="text-lg whitespace-nowrap"><a href="mailto:kecyza@gmail.com" class="hover:underline">kecyza@gmail.com</a></p>
-            <p class="mt-4 text-sm">komunikácia</p>
-          </li>
+                <a href="tel:+421903350450" class="contact-card" aria-label="Zavolať Lukášovi Kopúnovi, vedúcemu campu: 0903 350 450">
+                  <img src="/assets/img/contact-lukas.webp" alt="" width="370" height="319" loading="lazy" class="mx-auto block h-auto w-[7.3rem]" />
+                  <span class="mt-6 block text-xl font-bold">Lukáš Kopún</span>
+                  <span class="contact-card__link block text-xl">0903 350 450</span>
+                  <span class="mt-4 block text-sm">vedúci campu</span>
+                </a>
+              </li>
+              <li>
+                <a href="mailto:kecyza@gmail.com" class="contact-card" aria-label="Napísať mail Evke Belancovej (komunikácia): kecyza@gmail.com">
+                  <img src="/assets/img/contact-evka.webp" alt="" width="360" height="313" loading="lazy" class="mx-auto block h-auto w-[7.3rem]" />
+                  <span class="mt-6 block text-xl font-bold">Evka Belancová</span>
+                  <span class="contact-card__link block text-lg whitespace-nowrap">kecyza@gmail.com</span>
+                  <span class="mt-4 block text-sm">komunikácia</span>
+                </a>
+              </li>
             </ul>
           </div>
 
