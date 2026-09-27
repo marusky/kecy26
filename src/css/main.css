@@ -428,9 +428,8 @@
       background: var(--color-blue);
     }
     .program-list > li:nth-child(5) {
-      background: var(--color-ink);
+      background: #1d1d1f;
       color: #fff;
-      box-shadow: 4px 4px 0 0 var(--color-pink);
     }
     .program-list__time {
       width: auto;
@@ -610,6 +609,21 @@
     transition:
       background-color 0.4s ease,
       height 0.4s ease;
+  }
+  /* meno pod citátom ako ručný podpis */
+  .quote-author {
+    margin-top: 1.25rem;
+    font-family: var(--font-hand);
+    font-size: 2.25rem;
+    font-weight: 700;
+    line-height: 1;
+    text-align: right;
+    rotate: -3deg;
+  }
+  @media (width >= 64rem) {
+    .quote-author {
+      font-size: 2.75rem;
+    }
   }
   .quote-panel {
     transition: opacity 0.3s ease;

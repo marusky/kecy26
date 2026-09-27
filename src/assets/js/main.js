@@ -228,7 +228,6 @@
     if (!dialog || typeof dialog.showModal !== "function") return;
 
     const img = dialog.querySelector("[data-lb-img]");
-    const caption = dialog.querySelector("[data-lb-caption]");
     const counter = dialog.querySelector("[data-lb-counter]");
     let photos = [];
     let current = 0;
@@ -245,7 +244,6 @@
         img.style.opacity = "1";
       };
       pre.src = p.src;
-      caption.textContent = p.alt;
       counter.textContent = `${current + 1} / ${photos.length}`;
     }
 
