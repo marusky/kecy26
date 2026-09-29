@@ -183,6 +183,23 @@
     }
   }
 
+  /* Prvky, ktoré sa pri hoveri posunú: keby kurzor stál pri okraji, prvok by mu „ušiel“, hover by zhasol,
+     prvok by sa vrátil a tak dokola (blikanie). Neviditeľný okraj počas hoveru pokryje aj pôvodné miesto. */
+  .btn-brutal,
+  .btn-cta,
+  .back-link,
+  .marquee__btn,
+  .hover-lift {
+    position: relative;
+  }
+  @media (hover: hover) {
+    :is(.btn-brutal, .btn-cta, .back-link, .marquee__btn, .hover-lift):hover::after {
+      content: "";
+      position: absolute;
+      inset: -8px;
+    }
+  }
+
   /* Neubrutalistické tlačidlo */
   .btn-brutal {
     display: flex;
@@ -393,7 +410,8 @@
     }
   }
 
-  /* Program – mobil: zoznam, desktop: 5 kartičiek vedľa seba */
+  /* Program – mobil: zoznam, laptop: farebné kartičky pod sebou, desktop (od 80rem): 5 kartičiek vedľa seba
+     (5 stĺpcov sa pod ~1240 px nezmestí – „dopoludnie“ a „teambuilding,“ by pretekali z kartičky) */
   .program-list {
     display: grid;
     gap: 0.5rem;
@@ -422,15 +440,14 @@
   }
   @media (width >= 64rem) {
     .program-list {
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 1.25rem;
+      gap: 1rem;
       padding: 2.5rem 4rem 4rem;
       font-size: 1.125rem;
     }
     .program-list > li {
-      flex-direction: column;
-      gap: 0.5rem;
-      padding: 1.25rem;
+      align-items: baseline;
+      gap: 1.5rem;
+      padding: 1rem 1.25rem;
       border: 2px solid var(--color-ink);
       border-radius: 0.75rem;
       background: var(--color-paper);
@@ -450,8 +467,22 @@
       color: #fff;
     }
     .program-list__time {
-      width: auto;
+      width: 9rem;
       font-size: 1.5rem;
+    }
+  }
+  @media (width >= 80rem) {
+    .program-list {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+    .program-list > li {
+      flex-direction: column;
+      gap: 0.5rem;
+      padding: 1.25rem;
+    }
+    .program-list__time {
+      width: auto;
     }
   }
 
@@ -542,8 +573,14 @@
     width: max-content;
     animation: marquee var(--dur, 36s) linear infinite;
   }
-  .marquee:hover .marquee__track,
-  .marquee:focus-within .marquee__track {
+  /* zastaví sa pod myšou a pri prechádzaní klávesnicou; nie po obyčajnom kliku / ťuknutí
+     (fokus vrátený z lightboxu ani „prilepený“ :hover na dotykovom displeji ho nesmú nechať stáť) */
+  @media (hover: hover) {
+    .marquee:hover .marquee__track {
+      animation-play-state: paused;
+    }
+  }
+  .marquee:has(:focus-visible) .marquee__track {
     animation-play-state: paused;
   }
   .marquee__item {
@@ -632,6 +669,12 @@
     .head[aria-selected="false"]:hover {
       transform: translateY(0.35rem) scale(0.95);
     }
+    /* hlava sa pri hoveri zdvihne → spodný neviditeľný okraj, aby kurzor pri spodnej hrane neblikal (len dole, nech neprekryje susedov) */
+    .head[aria-selected="false"]:hover::after {
+      content: "";
+      position: absolute;
+      inset: 0 0 -0.75rem;
+    }
   }
   .quote-card {
     transition:
@@ -667,9 +710,14 @@
   }
 
   /* ——— Fotky ——— */
+  /* tlačidlo stojí na mieste (stabilná plocha pre hover), posúva sa len rámik vnútri */
   .photo-btn {
     display: block;
     width: 100%;
+    height: 100%;
+  }
+  .photo-btn__frame {
+    display: block;
     height: 100%;
     overflow: hidden;
     box-shadow: 4px 4px 0 0 var(--c);
@@ -681,7 +729,7 @@
     transition: transform 0.5s ease;
   }
   @media (hover: hover) {
-    .photo-btn:hover {
+    .photo-btn:hover .photo-btn__frame {
       transform: translate(-2px, -2px);
       box-shadow: 7px 7px 0 0 var(--c);
     }

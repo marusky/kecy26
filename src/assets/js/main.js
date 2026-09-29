@@ -241,6 +241,7 @@
     let photos = [];
     let current = 0;
     let opener = null;
+    let openedByKeyboard = false;
 
     function show(i) {
       current = (i + photos.length) % photos.length;
@@ -268,12 +269,14 @@
         const index = list.findIndex((p) => p.src === fullSrc(b));
         b.setAttribute("aria-haspopup", "dialog");
         b.setAttribute("aria-label", `Otvoriť fotku ${index + 1} z ${list.length}: ${list[index].alt}`);
-        b.addEventListener("click", () => {
+        b.addEventListener("click", (e) => {
           opener = b.closest("[data-clone]") ? originals[index] : b;
+          openedByKeyboard = e.detail === 0; // Enter/medzerník → detail 0, myš/dotyk → počet klikov
           photos = list;
           show(index);
           dialog.showModal();
           document.documentElement.style.overflow = "hidden";
+          updateBarColor();
         });
       });
     });
@@ -283,7 +286,11 @@
     dialog.querySelector("[data-lb-close]").addEventListener("click", () => dialog.close());
     dialog.addEventListener("close", () => {
       document.documentElement.style.overflow = "";
-      opener?.focus({ preventScroll: true });
+      updateBarColor();
+      // klávesnici vrátime fokus na fotku; po kliku myšou ho zrušíme (prehliadač ho tam vracia sám),
+      // inak by fotka ostala zameraná a pás by stál
+      if (openedByKeyboard) opener?.focus({ preventScroll: true });
+      else document.activeElement?.blur();
     });
     dialog.addEventListener("keydown", (e) => {
       if (e.key === "ArrowRight") show(current + 1);
@@ -313,6 +320,51 @@
     });
   }
 
+  /* ——— Farba líšt prehliadača ———
+     Safari na iOS 26 farbí hornú/spodnú lištu podľa pozadia body (staršie Safari a Chrome na Androide podľa meta theme-color).
+     Body je inak čierne (kvôli footru), takže nad limetkovým hero bola lišta čierna. Preto body aj theme-color
+     preberajú farbu sekcie, ktorá je práve na vrchu obrazovky. */
+  let updateBarColor = () => {};
+
+  function initBarColor() {
+    const meta = document.querySelector('meta[name="theme-color"]');
+    let current = "";
+
+    // farba z computed style, len ak je (skoro) nepriehľadná
+    const solid = (c) => {
+      const m = c.startsWith("rgb") && c.match(/[\d.]+/g);
+      return m && (m[3] === undefined || +m[3] > 0.5) ? `rgb(${m[0]}, ${m[1]}, ${m[2]})` : null;
+    };
+
+    // prvý predok s vlastnou farbou, ktorý ide cez celú šírku – malé prvky (fotky, tlačidlá) lištu nemenia
+    function colorAtTop() {
+      for (let el = document.elementFromPoint(innerWidth / 2, 1); el && el !== document.documentElement; el = el.parentElement) {
+        if (el.getBoundingClientRect().width < innerWidth * 0.9) continue;
+        const c = solid(getComputedStyle(el).backgroundColor);
+        if (c) return c;
+      }
+      return null;
+    }
+
+    let queued = false;
+    updateBarColor = () => {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(() => {
+        queued = false;
+        const c = colorAtTop();
+        if (!c || c === current) return;
+        current = c;
+        document.body.style.backgroundColor = c;
+        meta?.setAttribute("content", c);
+      });
+    };
+
+    updateBarColor();
+    window.addEventListener("scroll", updateBarColor, { passive: true });
+    window.addEventListener("resize", updateBarColor);
+  }
+
   /* ——— /registracia/: vybraný track z URL ——— */
   function initRegistration() {
     const badge = document.querySelector("[data-track-badge]");
@@ -324,6 +376,7 @@
     }
   }
 
+  initBarColor();
   initRegistration();
   initPhotoMarquees();
   initStack();
