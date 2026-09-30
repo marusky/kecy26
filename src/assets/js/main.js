@@ -105,31 +105,64 @@
     });
   }
 
-  /* ——— Karty so záložkami: ak je karta vyššia ako voľné miesto, nech sa prilepí až jej spodok ——— */
+  /* ——— Karty so záložkami ———
+     Každá karta sa „prilepí“ pod predchádzajúcu. Ak je karta vyššia ako voľné miesto, prilepí sa až jej spodok.
+     Natívne cez position: sticky, alebo (kde to ide) cez scroll-driven animáciu – viď .stack-card v CSS. */
   function initStack() {
     const cards = [...document.querySelectorAll("[data-stack-card]")];
-    if (!cards.length) return;
+    const stack = cards[0]?.parentElement;
+    if (!stack) return;
+
+    // poloha v dokumente podľa rozloženia (transform ju neovplyvní)
+    const docTop = (el) => {
+      let y = 0;
+      for (; el; el = el.offsetParent) y += el.offsetTop;
+      return y;
+    };
 
     function update() {
-      cards.forEach((card) => {
+      const root = getComputedStyle(document.documentElement);
+      const step = parseFloat(root.getPropertyValue("--tab-step")) * parseFloat(root.fontSize); // --tab-step je v rem
+      const stackBottom = docTop(stack) + stack.offsetHeight;
+
+      cards.forEach((card, i) => {
         card.style.top = "";
-        if (getComputedStyle(card).position !== "sticky") return; // desktop: mriežka, nič sa nelepí
-        const top = parseFloat(getComputedStyle(card).top) || 0;
+        ["--stick-from", "--stick-to", "--stick-by"].forEach((p) => card.style.removeProperty(p));
+        const style = getComputedStyle(card);
+        const emulated = style.animationName === "stack-stick";
+        if (style.position !== "sticky" && !emulated) return; // desktop: mriežka, nič sa nelepí
+
+        let top = i * step;
         // skutočná výška obsahu (bez min-height, ktorá kartu len naťahuje prázdnym miestom)
         card.style.minHeight = "0";
         const contentHeight = card.offsetHeight;
         card.style.minHeight = "";
         const overflow = contentHeight - (window.innerHeight - top);
-        if (overflow > 0) card.style.top = `${top - overflow}px`;
+        if (overflow > 0) top -= overflow;
+
+        if (!emulated) {
+          if (overflow > 0) card.style.top = `${top}px`;
+          return;
+        }
+        // to isté, čo by spravil sticky: od chvíle, keď karta dosiahne `top`, ide s obrazovkou,
+        // kým jej spodok nenarazí na koniec balíčka kariet
+        const from = docTop(card) - top;
+        const by = Math.max(0, stackBottom - docTop(card) - card.offsetHeight);
+        card.style.setProperty("--stick-from", `${from}px`);
+        card.style.setProperty("--stick-to", `${from + by}px`);
+        card.style.setProperty("--stick-by", `${by}px`);
       });
     }
 
     update();
     let t;
-    window.addEventListener("resize", () => {
+    const later = () => {
       clearTimeout(t);
       t = setTimeout(update, 100);
-    });
+    };
+    window.addEventListener("resize", later);
+    // obsah nad kartami môže zmeniť výšku (fonty, obrázky) → posunú sa aj body prilepenia
+    new ResizeObserver(later).observe(document.body);
     document.fonts?.ready.then(update);
   }
 

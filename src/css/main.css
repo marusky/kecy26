@@ -283,25 +283,33 @@
     min-height: calc(100svh - var(--i) * var(--tab-step));
     /* lvh = výška so skrytou lištou prehliadača → pod kartou nikdy nepresvitne ružová; voľné miesto je pod obsahom */
     min-height: calc(100lvh - var(--i) * var(--tab-step));
+    background: var(--cur);
     border: 2px solid var(--color-ink);
     border-bottom: 0;
     border-radius: var(--tab-radius) var(--tab-radius) 0 0;
-    isolation: isolate;
   }
-  /* Farba karty je v ::before, samotná karta má priehľadné pozadie. Safari 26 na iOS farbí lišty podľa background-color
-     sticky/fixed prvkov pri okraji obrazovky (pseudo-elementy ignoruje) – prilepená karta by inak zafarbila lištu
-     natrvalo (napr. zelená dole aj nad čiernym footrom). Takto ostanú lišty priehľadné (glass). */
-  .stack-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    border-radius: calc(var(--tab-radius) - 2px) calc(var(--tab-radius) - 2px) 0 0;
-    background: var(--cur);
+  /* Safari 26 na iOS zafarbí hornú/spodnú lištu podľa KAŽDÉHO sticky/fixed prvku pri okraji obrazovky (aj keď práve
+     nie je prilepený, a farbu si potom drží). Karty preto nie sú sticky, ale „lepenie“ robí scroll-driven animácia:
+     karta sa posúva transformom presne ako sticky (hodnoty rátá initStack v JS). Beží mimo hlavného vlákna, takže
+     neskáče. Prehliadače bez podpory (napr. Firefox) ostanú pri sticky – tie lišty nefarbia. */
+  @supports (animation-timeline: scroll()) {
+    @media (width < 64rem) {
+      .stack-card {
+        position: relative;
+        top: auto;
+        animation: stack-stick linear both;
+        animation-duration: auto !important; /* nie prepísať pravidlom pre prefers-reduced-motion – nie je to animácia, ale rozloženie */
+        animation-timeline: scroll(root);
+        animation-range: var(--stick-from, 0px) var(--stick-to, 0px);
+      }
+    }
   }
-  @media (width >= 64rem) {
-    .stack .stack-card::before {
-      border-radius: calc(var(--tab-radius) - 2px) calc(var(--tab-radius) - 2px) calc(1rem - 2px) calc(1rem - 2px);
+  @keyframes stack-stick {
+    from {
+      transform: none;
+    }
+    to {
+      transform: translateY(var(--stick-by, 0px));
     }
   }
   .stack-card {
