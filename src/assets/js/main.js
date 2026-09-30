@@ -276,7 +276,6 @@
           show(index);
           dialog.showModal();
           document.documentElement.style.overflow = "hidden";
-          updateBarColor();
         });
       });
     });
@@ -286,7 +285,6 @@
     dialog.querySelector("[data-lb-close]").addEventListener("click", () => dialog.close());
     dialog.addEventListener("close", () => {
       document.documentElement.style.overflow = "";
-      updateBarColor();
       // klávesnici vrátime fokus na fotku; po kliku myšou ho zrušíme (prehliadač ho tam vracia sám),
       // inak by fotka ostala zameraná a pás by stál
       if (openedByKeyboard) opener?.focus({ preventScroll: true });
@@ -320,52 +318,6 @@
     });
   }
 
-  /* ——— Farba líšt prehliadača ———
-     Safari 26 na iOS má lišty priehľadné (glass), pokiaľ pri okraji nie je sticky/fixed prvok s pozadím (viď .stack-card::before).
-     Pozadie body sa ukáže pri „pretiahnutí“ stránky za okraj; staršie Safari a Chrome na Androide farbia lištu podľa theme-color.
-     Obe preto preberajú farbu sekcie, ktorá je práve na vrchu obrazovky (pri skrolovaní oboma smermi). */
-  let updateBarColor = () => {};
-
-  function initBarColor() {
-    const meta = document.querySelector('meta[name="theme-color"]');
-    let current = "";
-
-    // farba z computed style, len ak je (skoro) nepriehľadná
-    const solid = (c) => {
-      const m = c.startsWith("rgb") && c.match(/[\d.]+/g);
-      return m && (m[3] === undefined || +m[3] > 0.5) ? `rgb(${m[0]}, ${m[1]}, ${m[2]})` : null;
-    };
-
-    // prvý predok s vlastnou farbou, ktorý ide cez celú šírku – malé prvky (fotky, tlačidlá) lištu nemenia
-    function colorAtTop() {
-      for (let el = document.elementFromPoint(innerWidth / 2, 1); el && el !== document.documentElement; el = el.parentElement) {
-        if (el.getBoundingClientRect().width < innerWidth * 0.9) continue;
-        // karty so záložkami majú farbu v ::before (kvôli Safari, viď .stack-card::before v CSS)
-        const c = solid(getComputedStyle(el).backgroundColor) || (el.matches(".stack-card") && solid(getComputedStyle(el, "::before").backgroundColor));
-        if (c) return c;
-      }
-      return null;
-    }
-
-    let queued = false;
-    updateBarColor = () => {
-      if (queued) return;
-      queued = true;
-      requestAnimationFrame(() => {
-        queued = false;
-        const c = colorAtTop();
-        if (!c || c === current) return;
-        current = c;
-        document.body.style.backgroundColor = c;
-        meta?.setAttribute("content", c);
-      });
-    };
-
-    updateBarColor();
-    window.addEventListener("scroll", updateBarColor, { passive: true });
-    window.addEventListener("resize", updateBarColor);
-  }
-
   /* ——— /registracia/: vybraný track z URL ——— */
   function initRegistration() {
     const badge = document.querySelector("[data-track-badge]");
@@ -377,7 +329,6 @@
     }
   }
 
-  initBarColor();
   initRegistration();
   initPhotoMarquees();
   initStack();
