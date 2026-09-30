@@ -324,6 +324,14 @@
       align-items: center;
     }
   }
+  /* Karta siaha o polomer záložky pod ďalšiu kartu → v jej zaoblených rohoch je vždy farba predchádzajúcej karty,
+     nie ružová. (100lvh na iOS 26 nesiaha až po spodok obrazovky – pod priehľadnou lištou by bol vidno pás pozadia.) */
+  @media (width < 64rem) {
+    .stack-card:not(.stack-card--last) {
+      margin-bottom: calc(-1 * var(--tab-radius));
+      padding-bottom: var(--tab-radius);
+    }
+  }
   .stack-card--last {
     border-bottom: 2px solid var(--color-ink);
   }
