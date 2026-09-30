@@ -283,10 +283,26 @@
     min-height: calc(100svh - var(--i) * var(--tab-step));
     /* lvh = výška so skrytou lištou prehliadača → pod kartou nikdy nepresvitne ružová; voľné miesto je pod obsahom */
     min-height: calc(100lvh - var(--i) * var(--tab-step));
-    background: var(--cur);
     border: 2px solid var(--color-ink);
     border-bottom: 0;
     border-radius: var(--tab-radius) var(--tab-radius) 0 0;
+    isolation: isolate;
+  }
+  /* Farba karty je v ::before, samotná karta má priehľadné pozadie. Safari 26 na iOS farbí lišty podľa background-color
+     sticky/fixed prvkov pri okraji obrazovky (pseudo-elementy ignoruje) – prilepená karta by inak zafarbila lištu
+     natrvalo (napr. zelená dole aj nad čiernym footrom). Takto ostanú lišty priehľadné (glass). */
+  .stack-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: calc(var(--tab-radius) - 2px) calc(var(--tab-radius) - 2px) 0 0;
+    background: var(--cur);
+  }
+  @media (width >= 64rem) {
+    .stack .stack-card::before {
+      border-radius: calc(var(--tab-radius) - 2px) calc(var(--tab-radius) - 2px) calc(1rem - 2px) calc(1rem - 2px);
+    }
   }
   .stack-card {
     display: flex;

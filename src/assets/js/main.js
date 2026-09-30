@@ -321,9 +321,9 @@
   }
 
   /* ——— Farba líšt prehliadača ———
-     Safari na iOS 26 farbí hornú/spodnú lištu podľa pozadia body (staršie Safari a Chrome na Androide podľa meta theme-color).
-     Body je inak čierne (kvôli footru), takže nad limetkovým hero bola lišta čierna. Preto body aj theme-color
-     preberajú farbu sekcie, ktorá je práve na vrchu obrazovky. */
+     Safari 26 na iOS má lišty priehľadné (glass), pokiaľ pri okraji nie je sticky/fixed prvok s pozadím (viď .stack-card::before).
+     Pozadie body sa ukáže pri „pretiahnutí“ stránky za okraj; staršie Safari a Chrome na Androide farbia lištu podľa theme-color.
+     Obe preto preberajú farbu sekcie, ktorá je práve na vrchu obrazovky (pri skrolovaní oboma smermi). */
   let updateBarColor = () => {};
 
   function initBarColor() {
@@ -340,7 +340,8 @@
     function colorAtTop() {
       for (let el = document.elementFromPoint(innerWidth / 2, 1); el && el !== document.documentElement; el = el.parentElement) {
         if (el.getBoundingClientRect().width < innerWidth * 0.9) continue;
-        const c = solid(getComputedStyle(el).backgroundColor);
+        // karty so záložkami majú farbu v ::before (kvôli Safari, viď .stack-card::before v CSS)
+        const c = solid(getComputedStyle(el).backgroundColor) || (el.matches(".stack-card") && solid(getComputedStyle(el, "::before").backgroundColor));
         if (c) return c;
       }
       return null;
