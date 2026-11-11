@@ -210,8 +210,13 @@
           </div>
 
           <!-- ============ FAKTY: kedy, kde, koľko, registrácia ============ -->
-          <dl class="facts mt-14 lg:col-span-2 lg:mt-4" aria-label="Základné info">
-            <div class="fact bg-lime">
+          <!-- desktop: kartičky visia na šnúre so štipcami (CSS .facts-wrap / .facts-rope) -->
+          <div class="facts-wrap mt-14 lg:col-span-2 lg:mt-4">
+          <svg class="facts-rope" viewBox="0 0 100 120" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+            <path d="M0 8 Q50 168 100 8" fill="none" vector-effect="non-scaling-stroke" />
+          </svg>
+          <dl class="facts" aria-label="Základné info">
+            <div class="fact fact--when bg-lime">
               <dt class="fact__label">Kedy</dt>
               <dd class="fact__value"><time datetime="2027-07-18">18.</time> – <time datetime="2027-07-24">24.&nbsp;7. 2027</time></dd>
               <dd class="fact__note">nedeľa až sobota, 7 dní</dd>
@@ -230,7 +235,7 @@
                 >
               </dd>
             </div>
-            <div class="fact bg-blue">
+            <div class="fact fact--cap bg-blue">
               <dt class="fact__label">Kapacita</dt>
               <dd class="fact__value">50 miest</dd>
               <dd class="fact__note">kto skôr príde, ten skôr melie</dd>
@@ -241,6 +246,7 @@
               <dd class="fact__note">alebo kým sa neminú miesta</dd>
             </div>
           </dl>
+          </div>
          </div>
         </section>
 

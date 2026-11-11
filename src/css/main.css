@@ -1060,14 +1060,118 @@
       font-size: 1rem;
     }
   }
+  .facts-rope {
+    display: none;
+  }
+  /* desktop: šnúra s prehnutím, kartičky visia na štipcoch.
+     Šnúra je kvadratická krivka – prehnutie v strede 80 px; --drop = výška šnúry nad stredom kartičky + štipec. */
   @media (width >= 64rem) {
+    .facts-wrap {
+      position: relative;
+      padding-inline: 0.5rem;
+    }
+    .facts-wrap::before,
+    .facts-wrap::after {
+      content: "";
+      position: absolute;
+      top: 2px;
+      width: 12px;
+      height: 12px;
+      border: 2px solid var(--color-ink);
+      border-radius: 999px;
+      background: var(--color-lime);
+      box-shadow: 2px 2px 0 0 var(--color-ink);
+    }
+    .facts-wrap::before {
+      left: -6px;
+    }
+    .facts-wrap::after {
+      right: -6px;
+    }
+    .facts-rope {
+      display: block;
+      position: absolute;
+      inset: 0 0 auto;
+      width: 100%;
+      height: 120px;
+      overflow: visible;
+    }
+    .facts-rope path {
+      stroke: var(--color-ink);
+      stroke-width: 2.5px;
+      stroke-linecap: round;
+    }
     .facts {
+      position: relative;
       grid-template-columns: 1.6fr repeat(3, minmax(0, 1fr));
-      align-items: stretch;
+      align-items: start;
+      column-gap: 1.75rem;
     }
     .fact--place,
     .fact--wide {
       grid-column: auto;
+    }
+    .facts > .fact {
+      --tilt: 0deg;
+      position: relative;
+      margin-top: var(--drop);
+      rotate: var(--tilt);
+      transform-origin: 50% -14px;
+    }
+    .fact--place {
+      --drop: 58px;
+      --tilt: -1.5deg;
+    }
+    .fact--when {
+      --drop: 93px;
+      --tilt: 1.5deg;
+    }
+    .fact--cap {
+      --drop: 84px;
+      --tilt: -1deg;
+    }
+    .fact--wide {
+      --drop: 44px;
+      --tilt: 2deg;
+    }
+    /* štipec */
+    .fact::before {
+      content: "";
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      width: 14px;
+      height: 32px;
+      margin-left: -7px;
+      border: 2px solid var(--color-ink);
+      border-radius: 4px 4px 3px 3px;
+      background: linear-gradient(var(--color-ink) 0 0) center 11px / 100% 2px no-repeat, #fff;
+      box-shadow: 2px 2px 0 0 var(--color-ink);
+    }
+  }
+  @media (width >= 64rem) and (prefers-reduced-motion: no-preference) {
+    .fact {
+      animation: fact-sway 4.5s ease-in-out infinite alternate;
+    }
+    .fact--when {
+      animation-duration: 5.2s;
+      animation-delay: -2s;
+    }
+    .fact--cap {
+      animation-duration: 3.9s;
+      animation-delay: -1s;
+    }
+    .fact--wide {
+      animation-duration: 4.8s;
+      animation-delay: -3s;
+    }
+  }
+  @keyframes fact-sway {
+    from {
+      rotate: calc(var(--tilt) - 1.25deg);
+    }
+    to {
+      rotate: calc(var(--tilt) + 1.25deg);
     }
   }
 
