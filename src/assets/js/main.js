@@ -351,6 +351,43 @@
     });
   }
 
+  /* ——— Ceny podľa dátumu (hlavná stránka + /registracia/) a otvorenie registrácie ——— */
+  // Pásma: do 31. 1. 2027 → 245 €, 1. 2. – 15. 4. → 260 €, od 16. 4. → 275 €.
+  // HTML má natvrdo prvé pásmo (funguje aj bez JS); tu sa po dátume prepne na aktuálne.
+  function initPrices() {
+    const d = new Date();
+    const today = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+    const tiers = [
+      { until: "2027-01-31", price: 245, next: "do 31.&nbsp;1. · potom 260&nbsp;€ a&nbsp;275&nbsp;€" },
+      { until: "2027-04-15", price: 260, next: "do 15.&nbsp;4. · potom 275&nbsp;€" },
+      { until: null, price: 275, next: "do 30.&nbsp;6. alebo do vypredania miest" },
+    ];
+    const now = tiers.findIndex((t) => !t.until || today <= t.until);
+
+    const priceNow = document.querySelector("[data-price-now]");
+    const priceNext = document.querySelector("[data-price-next]");
+    if (priceNow) priceNow.innerHTML = `${tiers[now].price}&nbsp;€`;
+    if (priceNext) priceNext.innerHTML = tiers[now].next;
+
+    document.querySelectorAll("[data-tier]").forEach((li, i) => {
+      li.classList.toggle("is-now", i === now);
+      li.classList.toggle("is-past", i < now);
+      const tag = li.querySelector("[data-tier-tag]");
+      if (tag) tag.hidden = i !== now;
+    });
+
+    // tlačidlo na prihlášku: pred otvorením / po uzavretí registrácie nie je klikateľné
+    document.querySelectorAll("[data-opens]").forEach((a) => {
+      const label = a.querySelector("[data-label]");
+      const msg = today < a.dataset.opens ? a.dataset.msgBefore : a.dataset.closes && today > a.dataset.closes ? a.dataset.msgAfter : null;
+      if (!msg) return;
+      a.removeAttribute("href");
+      a.setAttribute("aria-disabled", "true");
+      a.setAttribute("role", "link");
+      if (label) label.textContent = msg;
+    });
+  }
+
   /* ——— /registracia/: vybraný track z URL ——— */
   function initRegistration() {
     const badge = document.querySelector("[data-track-badge]");
@@ -363,6 +400,7 @@
   }
 
   initRegistration();
+  initPrices();
   initPhotoMarquees();
   initStack();
   initVideo();

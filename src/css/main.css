@@ -994,6 +994,170 @@
     }
   }
 
+  /* ——— Fakty na hlavnej stránke (kedy / kde / kapacita / registrácia) ——— */
+  .facts {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.875rem;
+  }
+  .fact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.875rem 1rem 1rem;
+    border: 2px solid var(--color-ink);
+    border-radius: 0.875rem;
+    box-shadow: var(--shadow-brutal);
+  }
+  .fact:nth-child(odd) {
+    rotate: -1deg;
+  }
+  .fact:nth-child(even) {
+    rotate: 1deg;
+  }
+  .fact--place,
+  .fact--wide {
+    grid-column: 1 / -1;
+  }
+  .fact--place {
+    order: -1;
+  }
+  .fact__label {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .fact__value {
+    font-family: var(--font-display);
+    font-size: 1.375rem;
+    font-weight: 800;
+    line-height: 1.05;
+  }
+  .fact--place .fact__value {
+    font-size: 1.875rem;
+  }
+  .fact__note {
+    font-size: 0.875rem;
+    line-height: 1.3;
+  }
+  @media (width >= 48rem) {
+    .facts {
+      gap: 1.25rem;
+    }
+    .fact {
+      padding: 1.25rem 1.5rem 1.375rem;
+      border-radius: 1.125rem;
+      box-shadow: var(--shadow-brutal-lg);
+    }
+    .fact__value {
+      font-size: 1.75rem;
+    }
+    .fact--place .fact__value {
+      font-size: 2.5rem;
+    }
+    .fact__note {
+      font-size: 1rem;
+    }
+  }
+  @media (width >= 64rem) {
+    .facts {
+      grid-template-columns: 1.6fr repeat(3, minmax(0, 1fr));
+      align-items: stretch;
+    }
+    .fact--place,
+    .fact--wide {
+      grid-column: auto;
+    }
+  }
+
+  /* ——— /registracia/: termín registrácie a cenové pásma ——— */
+  .reg-window {
+    margin-top: 1.25rem;
+    max-width: 36rem;
+    padding: 0.75rem 1rem;
+    border: 2px dashed var(--color-ink);
+    border-radius: 0.75rem;
+    line-height: 1.35;
+  }
+  .reg-window strong {
+    font-weight: 600;
+  }
+  .price-tier {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--color-ink);
+    border-radius: 0.75rem;
+    background: rgb(255 255 255 / 0.35);
+    line-height: 1.25;
+  }
+  .price-tier__when {
+    flex: 1;
+  }
+  .price-tier__when strong {
+    font-weight: 600;
+  }
+  .price-tier__tag {
+    flex: none;
+    padding: 0.125rem 0.5rem;
+    border: 2px solid var(--color-ink);
+    border-radius: 999px;
+    background: var(--color-ink);
+    color: var(--color-lime);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .price-tier__tag[hidden] {
+    display: none;
+  }
+  .price-tier__price {
+    flex: none;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 800;
+  }
+  .price-tier.is-now {
+    background: var(--color-lime);
+    box-shadow: var(--shadow-brutal);
+  }
+  .price-tier.is-now .price-tier__price {
+    font-size: 2rem;
+  }
+  .price-tier.is-past {
+    opacity: 0.55;
+  }
+  .price-tier.is-past .price-tier__price {
+    text-decoration: line-through;
+    text-decoration-thickness: 3px;
+  }
+  @media (width >= 48rem) {
+    .price-tier {
+      padding: 0.875rem 1.25rem;
+      font-size: 1.125rem;
+    }
+    .price-tier__price {
+      font-size: 1.75rem;
+    }
+    .price-tier.is-now .price-tier__price {
+      font-size: 2.5rem;
+    }
+  }
+  /* prihláška pred otvorením / po uzavretí registrácie (main.js → initPrices) */
+  .btn-cta[aria-disabled="true"] {
+    cursor: default;
+    background: #fff;
+    border-style: dashed;
+    box-shadow: none;
+    transform: none;
+  }
+  .btn-cta[aria-disabled="true"] svg {
+    display: none;
+  }
+
   /* ——— Lightbox ——— */
   .lightbox {
     width: 100%;

@@ -4,10 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 
-    <title>Registrácia – KECY Žilina 2027 | cena, zľava, štipendium, storno</title>
+    <title>Registrácia – KECY Žilina 2027 | cena, záloha, zľava, štipendium, storno</title>
     <meta
       name="description"
-      content="Všetko, čo potrebuješ vedieť pred registráciou na KECY Žilina 2027: cena 249 €, zľava 20 % za pozvaného kamoša, štipendium až do 90 %, storno podmienky a pravidlá campu."
+      content="Všetko, čo potrebuješ vedieť pred registráciou na KECY Žilina 2027: cena od 245 €, záloha 50 €, zľava 25 € pre teba aj kamoša, štipendium až do 90 %, storno podmienky a pravidlá campu. 18. – 24. 7. 2027, Hotel Krpáčovo, 50 miest."
     />
     <link rel="canonical" href="%SITE_URL%/registracia/" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
@@ -18,12 +18,12 @@
     <meta property="og:locale" content="sk_SK" />
     <meta property="og:site_name" content="KECY Žilina" />
     <meta property="og:title" content="Registrácia – KECY Žilina 2027" />
-    <meta property="og:description" content="Cena, zľava za kamoša, štipendium a storno podmienky – všetko na jednom mieste. Leto 2027." />
+    <meta property="og:description" content="Cena, záloha, zľava za kamoša, štipendium a storno podmienky – všetko na jednom mieste. 18. – 24. 7. 2027, Hotel Krpáčovo." />
     <meta property="og:url" content="%SITE_URL%/registracia/" />
     <meta property="og:image" content="%SITE_URL%/assets/img/og-image.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="KECY Žilina 2027 – English camp for youth, leto 2027" />
+    <meta property="og:image:alt" content="KECY Žilina 2027 – English camp for youth, 18. – 24. 7. 2027" />
     <meta name="twitter:card" content="summary_large_image" />
 
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -69,20 +69,27 @@
           </nav>
 
           <div class="lg:col-start-1">
-            <p class="mt-10 text-xl md:text-2xl lg:mt-14">KECY Žilina · Leto 2027</p>
+            <p class="mt-10 text-xl md:text-2xl lg:mt-14">KECY Žilina · 18. – 24.&nbsp;7. 2027 · Hotel&nbsp;Krpáčovo</p>
             <h1 class="mt-3 font-display text-[clamp(3rem,15vw,4.25rem)] leading-[0.92] font-extrabold tracking-[-0.02em] uppercase md:text-[6rem] lg:text-[clamp(5.5rem,8vw,8rem)]">
               Registrácia
             </h1>
             <p class="mt-6 max-w-xl text-xl leading-[1.25] md:text-2xl">
-              Registrácia je záväzná až po zaplatení, tak neváhaj, aby ti niekto neuchmatol miesto. Predtým, než sa prihlásiš, si,
-              <strong class="font-semibold">prosím, prečítaj všetko na tejto stránke</strong> – cenu, zľavy, storno podmienky aj pravidlá campu.
+              Máme len <strong class="font-semibold">50 miest</strong> a&nbsp;miesto je tvoje až po zaplatení (stačí záloha 50&nbsp;€), tak neváhaj, aby ti ho
+              niekto neuchmatol. Predtým, než sa prihlásiš, si, <strong class="font-semibold">prosím, prečítaj všetko na tejto stránke</strong> – cenu, zálohu,
+              zľavy, storno podmienky aj pravidlá campu.
             </p>
 
             <!-- zobrazí sa, keď prídeš z tlačidla „English it is“ / „Už bežím“ (?track=…) -->
             <p class="track-badge" data-track-badge hidden></p>
 
+            <p class="reg-window">
+              Registrácia beží od <strong><time datetime="2026-11-15">15.&nbsp;novembra 2026</time></strong> do <strong><time datetime="2027-06-30">30.&nbsp;júna 2027</time></strong>
+              alebo kým sa neminie všetkých 50&nbsp;miest.
+            </p>
+
             <ul class="mt-8 flex flex-wrap gap-2" aria-label="Obsah stránky">
               <li><a href="#cena" class="chip">Cena</a></li>
+              <li><a href="#zaloha" class="chip">Záloha 50&nbsp;€</a></li>
               <li><a href="#zlava" class="chip">Zľava za kamoša</a></li>
               <li><a href="#stipendium" class="chip">Štipendium</a></li>
               <li><a href="#storno" class="chip">Storno podmienky</a></li>
@@ -105,36 +112,80 @@
       <main id="obsah" tabindex="-1" class="bg-pink outline-none">
         <div class="shell grid gap-8 py-12 md:gap-10 md:py-16 lg:grid-cols-2 lg:gap-12 lg:py-24">
           <!-- ============ CENA ============ -->
-          <section id="cena" aria-labelledby="cena-title" class="info-card bg-blue lg:shadow-[4px_4px_0_0_var(--color-green),6px_6px_0_0_var(--color-ink),10px_10px_0_0_var(--color-lime)]">
-            <h2 id="cena-title" class="info-card__title">Cena</h2>
-            <p class="mt-4 font-display text-[4rem] leading-none font-extrabold md:text-[5rem]">249&nbsp;€</p>
-            <p class="mt-3 text-xl">
-              S&nbsp;pozvaným kamošom len <strong class="font-display text-2xl font-extrabold">199&nbsp;€</strong>
+          <!-- aktuálne pásmo sa podľa dátumu zvýrazní (main.js → initPrices); bez JS ostane zvýraznené prvé -->
+          <section id="cena" aria-labelledby="cena-title" class="info-card bg-blue lg:col-span-2 lg:grid lg:grid-cols-[1.35fr_1fr] lg:gap-x-14 lg:shadow-[4px_4px_0_0_var(--color-green),6px_6px_0_0_var(--color-ink),10px_10px_0_0_var(--color-lime)]">
+            <div>
+              <h2 id="cena-title" class="info-card__title">Cena</h2>
+              <p class="mt-4 md:text-lg">Čím skôr sa prihlásiš, tým menej zaplatíš.</p>
+              <ol class="mt-5 grid gap-3" aria-label="Cenové pásma">
+                <li class="price-tier is-now" data-tier data-until="2027-01-31">
+                  <span class="price-tier__when">do <strong>31.&nbsp;1. 2027</strong></span>
+                  <span class="price-tier__tag" data-tier-tag>teraz</span>
+                  <span class="price-tier__price">245&nbsp;€</span>
+                </li>
+                <li class="price-tier" data-tier data-until="2027-04-15">
+                  <span class="price-tier__when">1.&nbsp;2. – 15.&nbsp;4. 2027</span>
+                  <span class="price-tier__tag" data-tier-tag hidden>teraz</span>
+                  <span class="price-tier__price">260&nbsp;€</span>
+                </li>
+                <li class="price-tier" data-tier>
+                  <span class="price-tier__when">od 16.&nbsp;4. 2027</span>
+                  <span class="price-tier__tag" data-tier-tag hidden>teraz</span>
+                  <span class="price-tier__price">275&nbsp;€</span>
+                </li>
+              </ol>
+              <p class="mt-4 leading-snug md:text-lg">
+                S&nbsp;pozvaným kamošom máte <strong class="font-semibold">obaja o&nbsp;25&nbsp;€ menej</strong>. A&nbsp;zálohou 50&nbsp;€ si cenu zamkneš, aj keď
+                zvyšok doplatíš neskôr.
+              </p>
+            </div>
+            <div>
+              <p class="mt-6 leading-snug md:text-lg lg:mt-0">V cene je:</p>
+              <ul class="check-list mt-3">
+                <li>7 dní angličtiny alebo športu s&nbsp;Američanmi</li>
+                <li>ubytovanie v&nbsp;Hoteli Krpáčovo v&nbsp;Nízkych Tatrách a&nbsp;plná penzia</li>
+                <li>celý program – aktivity, výlety, večery pri ohni</li>
+                <li>táborový merch a&nbsp;americké sladkosti</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- ============ ZÁLOHA ============ -->
+          <section id="zaloha" aria-labelledby="zaloha-title" class="info-card bg-paper">
+            <h2 id="zaloha-title" class="info-card__title">Záloha 50&nbsp;€ <span aria-hidden="true">🔒</span></h2>
+            <p class="mt-4 md:text-lg">
+              Nemusíš platiť všetko naraz. Stačí <strong class="font-semibold">zaplatiť zálohu 50&nbsp;€</strong> a&nbsp;máš isté miesto aj cenu, ktorá platila
+              v&nbsp;deň platby.
             </p>
-            <p class="mt-6 leading-snug md:text-lg">V cene je:</p>
-            <ul class="check-list mt-3">
-              <li>7 dní angličtiny alebo športu s&nbsp;Američanmi</li>
-              <li>ubytovanie v&nbsp;horách a&nbsp;plná penzia</li>
-              <li>celý program – aktivity, výlety, večery pri ohni</li>
-              <li>táborový merch a&nbsp;americké sladkosti</li>
-            </ul>
+            <ol class="step-list mt-5">
+              <li>Zaregistruj sa cez formulár.</li>
+              <li>Zaplať zálohu 50&nbsp;€ – tým si <strong class="font-semibold">zamkneš aktuálnu cenu</strong> aj miesto.</li>
+              <li>Zvyšok doplatíš kedykoľvek <strong class="font-semibold">do 30.&nbsp;4. 2027</strong>.</li>
+            </ol>
+            <p class="callout mt-6">
+              <span aria-hidden="true">🎄</span> <strong class="font-semibold">Príklad:</strong> v&nbsp;decembri zaplatíš 50&nbsp;€ a&nbsp;držíš si cenu 245&nbsp;€.
+              Zvyšných 195&nbsp;€ (s&nbsp;kamošom len 170&nbsp;€) pošleš až na jar – Vianoce ti to nezruinuje.
+            </p>
           </section>
 
           <!-- ============ ZĽAVA ZA KAMOŠA ============ -->
           <section id="zlava" aria-labelledby="zlava-title" class="info-card bg-lime">
-            <h2 id="zlava-title" class="info-card__title">Pozvi kamoša, získaj 20&nbsp;% zľavu <span aria-hidden="true">🎉</span></h2>
-            <p class="mt-4 md:text-lg">Cena po zľave je <strong class="font-semibold">199&nbsp;€</strong>. Ako to funguje?</p>
+            <h2 id="zlava-title" class="info-card__title">Pozvi kamoša, obaja máte −25&nbsp;€ <span aria-hidden="true">🎉</span></h2>
+            <p class="mt-4 md:text-lg">
+              Keď na KECY pozveš niekoho, kto tu <strong class="font-semibold">ešte nikdy nebol</strong>, zľavu 25&nbsp;€ dostaneš ty
+              <strong class="font-semibold">aj on/ona</strong>. Ako to funguje?
+            </p>
             <ol class="step-list mt-5">
-              <li>Povedz o&nbsp;tábore svojim kamarátom.</li>
-              <li>Keď sa budú registrovať, do príslušnej kolónky uvedú tvoje meno.</li>
-              <li>Po ich úspešnej registrácii a&nbsp;úhrade získaš 20&nbsp;% zľavu na svoj camp.*</li>
-              <li>Zľavu môžeš využiť iba raz.</li>
+              <li>Povedz o&nbsp;tábore kamošovi, ktorý na KECY ešte nebol.</li>
+              <li>Keď sa bude registrovať, do príslušnej kolónky uvedie tvoje meno.</li>
+              <li>Keď ste obaja zaregistrovaní a&nbsp;zaplatení, každý z&nbsp;vás má 25&nbsp;€ dole z&nbsp;ceny.*</li>
+              <li>Zľavu za pozvanie môžeš získať iba raz.</li>
             </ol>
             <p class="callout mt-6">
-              <span aria-hidden="true">💰</span> <strong class="font-semibold">Už si zaplatil/a?</strong> Žiadny stres! Peniaze za pozvanie ti pošleme späť na účet.
+              <span aria-hidden="true">💰</span> <strong class="font-semibold">Už si zaplatil/a?</strong> Žiadny stres! Zľavu ti pošleme späť na účet.
             </p>
             <p class="mt-5 font-semibold md:text-lg"><span aria-hidden="true">👉</span> Pozvi kamarátov a&nbsp;zažite spolu leto, na ktoré len tak nezabudnete!</p>
-            <p class="mt-4 text-sm leading-snug">*Zľavu za pozvanie môžeš získať iba za účastníkov, ktorí sa na KECY Camp Žilina prihlasujú úplne prvýkrát.</p>
+            <p class="mt-4 text-sm leading-snug">*Pozvaný kamoš sa musí na KECY Camp Žilina prihlasovať úplne prvýkrát.</p>
           </section>
 
           <!-- ============ ŠTIPENDIUM ============ -->
@@ -205,10 +256,21 @@
           <!-- ============ POKRAČOVAŤ ============ -->
           <section aria-labelledby="pokracovat-title" class="info-card bg-lime lg:col-span-2 lg:shadow-[8px_8px_0_0_var(--color-ink)]">
             <h2 id="pokracovat-title" class="info-card__title">Všetko jasné? Poďme na to!</h2>
-            <p class="mt-4 max-w-2xl md:text-lg">Registrácia prebieha cez online formulár. Nezabudni si v&nbsp;ňom vybrať svoj track a&nbsp;ak ťa pozval kamoš, uveď jeho meno.</p>
+            <p class="mt-4 max-w-2xl md:text-lg">
+              Registrácia prebieha cez online formulár. Nezabudni si v&nbsp;ňom vybrať svoj track a&nbsp;ak ťa pozval kamoš, uveď jeho meno. Potom už len zaplatiť
+              zálohu 50&nbsp;€ (alebo celú sumu) a&nbsp;miesto je tvoje.
+            </p>
             <p class="mt-6">
-              <a href="%FORM_URL%" class="btn-cta btn-cta--xl" style="--cta: var(--color-pink)">
-                Prejsť na registračný formulár
+              <a
+                href="%FORM_URL%"
+                class="btn-cta btn-cta--xl"
+                style="--cta: var(--color-pink)"
+                data-opens="2026-11-15"
+                data-closes="2027-06-30"
+                data-msg-before="Registrácia sa otvára 15. novembra"
+                data-msg-after="Registrácia je uzavretá"
+              >
+                <span data-label>Prejsť na registračný formulár</span>
                 <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M5 12h14M13 6l6 6-6 6" />
                 </svg>
