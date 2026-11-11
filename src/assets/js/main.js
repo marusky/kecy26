@@ -352,21 +352,21 @@
   }
 
   /* ——— Ceny podľa dátumu (hlavná stránka + /registracia/) a otvorenie registrácie ——— */
-  // Pásma: do 31. 1. 2027 → 245 €, 1. 2. – 15. 4. → 260 €, od 16. 4. → 275 €.
+  // Pásma: do 31. 1. 2027 → 245€, 1. 2. – 15. 4. → 260€, od 16. 4. → 275€.
   // HTML má natvrdo prvé pásmo (funguje aj bez JS); tu sa po dátume prepne na aktuálne.
   function initPrices() {
     const d = new Date();
     const today = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
     const tiers = [
-      { until: "2027-01-31", price: 245, next: "do 31.&nbsp;1. · potom 260&nbsp;€ a&nbsp;275&nbsp;€" },
-      { until: "2027-04-15", price: 260, next: "do 15.&nbsp;4. · potom 275&nbsp;€" },
+      { until: "2027-01-31", price: 245, next: "do 31.&nbsp;1. · potom 260€ a&nbsp;275€" },
+      { until: "2027-04-15", price: 260, next: "do 15.&nbsp;4. · potom 275€" },
       { until: null, price: 275, next: "do 30.&nbsp;6. alebo do vypredania miest" },
     ];
     const now = tiers.findIndex((t) => !t.until || today <= t.until);
 
     const priceNow = document.querySelector("[data-price-now]");
     const priceNext = document.querySelector("[data-price-next]");
-    if (priceNow) priceNow.innerHTML = `${tiers[now].price}&nbsp;€`;
+    if (priceNow) priceNow.innerHTML = `${tiers[now].price}€`;
     if (priceNext) priceNext.innerHTML = tiers[now].next;
 
     document.querySelectorAll("[data-tier]").forEach((li, i) => {
@@ -388,6 +388,55 @@
     });
   }
 
+  /* ——— Desktop: šnúra s kartičkami cez celú šírku obrazovky ———
+     Kartičky ostávajú tam, kde ich má CSS (--drop); šnúra sa nakreslí od ľavého po pravý okraj okna
+     hladkou krivkou (Catmull-Rom) cez body, kde štipce držia kartičky. Bez JS ostane krátka šnúra s klincami. */
+  function initFactsRope() {
+    const wrap = document.querySelector("[data-facts-rope]");
+    const svg = wrap?.querySelector(".facts-rope");
+    const path = wrap?.querySelector("[data-rope-path]");
+    if (!wrap || !svg || !path) return;
+    const lg = window.matchMedia("(min-width: 64rem)");
+
+    function draw() {
+      if (!lg.matches) return;
+      const vw = document.documentElement.clientWidth;
+      const box = wrap.getBoundingClientRect();
+      const left = box.left;
+      // offset* (voči .facts) nezávisí od rotácie (hojdania) kartičiek; bod otáčania je 14 px nad kartičkou
+      const pins = [...wrap.querySelectorAll(".fact")]
+        .map((c) => {
+          const parent = c.offsetParent.getBoundingClientRect();
+          return { x: parent.left + c.offsetLeft + c.offsetWidth / 2, y: parent.top - box.top + c.offsetTop - 14 };
+        })
+        .sort((a, b) => a.x - b.x);
+      if (!pins.length) return;
+      const edgeY = Math.min(...pins.map((p) => p.y)) - 34;
+      const pts = [{ x: -4, y: edgeY }, ...pins, { x: vw + 4, y: edgeY }];
+      let d = `M${pts[0].x} ${pts[0].y}`;
+      for (let i = 0; i < pts.length - 1; i++) {
+        const p0 = pts[i - 1] ?? pts[i];
+        const p1 = pts[i];
+        const p2 = pts[i + 1];
+        const p3 = pts[i + 2] ?? p2;
+        const c1 = { x: p1.x + (p2.x - p0.x) / 6, y: p1.y + (p2.y - p0.y) / 6 };
+        const c2 = { x: p2.x - (p3.x - p1.x) / 6, y: p2.y - (p3.y - p1.y) / 6 };
+        d += ` C${c1.x.toFixed(1)} ${c1.y.toFixed(1)} ${c2.x.toFixed(1)} ${c2.y.toFixed(1)} ${p2.x.toFixed(1)} ${p2.y.toFixed(1)}`;
+      }
+      svg.style.left = `${-left}px`;
+      svg.style.width = `${vw}px`;
+      svg.setAttribute("viewBox", `0 0 ${vw} ${svg.clientHeight || 120}`);
+      svg.setAttribute("preserveAspectRatio", "none");
+      path.setAttribute("d", d);
+      wrap.classList.add("is-full");
+    }
+
+    draw();
+    new ResizeObserver(draw).observe(wrap);
+    lg.addEventListener("change", draw);
+    document.fonts?.ready.then(draw);
+  }
+
   /* ——— /registracia/: vybraný track z URL ——— */
   function initRegistration() {
     const badge = document.querySelector("[data-track-badge]");
@@ -401,6 +450,7 @@
 
   initRegistration();
   initPrices();
+  initFactsRope();
   initPhotoMarquees();
   initStack();
   initVideo();

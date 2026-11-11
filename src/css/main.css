@@ -1081,9 +1081,15 @@
       border-radius: 999px;
       background: var(--color-lime);
       box-shadow: 2px 2px 0 0 var(--color-ink);
+      z-index: 1; /* klinec nad šnúrou */
     }
     .facts-wrap::before {
       left: -6px;
+    }
+    /* JS natiahol šnúru na celú šírku okna – klince netreba */
+    .facts-wrap.is-full::before,
+    .facts-wrap.is-full::after {
+      display: none;
     }
     .facts-wrap::after {
       right: -6px;
@@ -1103,6 +1109,7 @@
     }
     .facts {
       position: relative;
+      z-index: 2;
       grid-template-columns: 1.6fr repeat(3, minmax(0, 1fr));
       align-items: start;
       column-gap: 1.75rem;
