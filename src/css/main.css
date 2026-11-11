@@ -1086,11 +1086,6 @@
     .facts-wrap::before {
       left: -6px;
     }
-    /* JS natiahol šnúru na celú šírku okna – klince netreba */
-    .facts-wrap.is-full::before,
-    .facts-wrap.is-full::after {
-      display: none;
-    }
     .facts-wrap::after {
       right: -6px;
     }
@@ -1157,20 +1152,63 @@
     }
   }
   @media (width >= 64rem) and (prefers-reduced-motion: no-preference) {
-    .fact {
-      animation: fact-sway 4.5s ease-in-out infinite alternate;
+    /* jemné hojdanie do strán (rotate) + pri hoveri kolísanie dopredu/dozadu (transform: rotateX okolo štipca).
+       fact-sway ostáva v zozname na rovnakom mieste, takže sa pri pridaní fact-swing nereštartuje. */
+    .facts > .fact {
+      --sway: 4.5s;
+      --sway-delay: 0s;
+      animation: fact-sway var(--sway) ease-in-out var(--sway-delay) infinite alternate;
+    }
+    .facts > .fact.is-swinging {
+      animation:
+        fact-sway var(--sway) ease-in-out var(--sway-delay) infinite alternate,
+        fact-swing 2.2s linear;
     }
     .fact--when {
-      animation-duration: 5.2s;
-      animation-delay: -2s;
+      --sway: 5.2s;
+      --sway-delay: -2s;
     }
     .fact--cap {
-      animation-duration: 3.9s;
-      animation-delay: -1s;
+      --sway: 3.9s;
+      --sway-delay: -1s;
     }
     .fact--wide {
-      animation-duration: 4.8s;
-      animation-delay: -3s;
+      --sway: 4.8s;
+      --sway-delay: -3s;
+    }
+  }
+  /* tlmené kyvadlo: spodok kartičky ide k nám, potom od nás, s klesajúcou výchylkou */
+  @keyframes fact-swing {
+    0% {
+      transform: perspective(700px) rotateX(0deg);
+      animation-timing-function: ease-out;
+    }
+    10% {
+      transform: perspective(700px) rotateX(-26deg);
+      animation-timing-function: ease-in-out;
+    }
+    28% {
+      transform: perspective(700px) rotateX(18deg);
+      animation-timing-function: ease-in-out;
+    }
+    45% {
+      transform: perspective(700px) rotateX(-11deg);
+      animation-timing-function: ease-in-out;
+    }
+    61% {
+      transform: perspective(700px) rotateX(6.5deg);
+      animation-timing-function: ease-in-out;
+    }
+    76% {
+      transform: perspective(700px) rotateX(-3.5deg);
+      animation-timing-function: ease-in-out;
+    }
+    89% {
+      transform: perspective(700px) rotateX(1.5deg);
+      animation-timing-function: ease-in-out;
+    }
+    100% {
+      transform: perspective(700px) rotateX(0deg);
     }
   }
   @keyframes fact-sway {

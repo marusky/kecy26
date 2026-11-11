@@ -210,10 +210,10 @@
           </div>
 
           <!-- ============ FAKTY: kedy, kde, koľko, registrácia ============ -->
-          <!-- desktop: kartičky visia na šnúre so štipcami (CSS .facts-wrap / .facts-rope) -->
-          <div class="facts-wrap mt-14 lg:col-span-2 lg:mt-4" data-facts-rope>
+          <!-- desktop: kartičky visia na šnúre so štipcami (CSS .facts-wrap / .facts-rope), pri hoveri sa rozkolíšu (main.js → initFactsSwing) -->
+          <div class="facts-wrap mt-14 lg:col-span-2 lg:mt-4">
           <svg class="facts-rope" viewBox="0 0 100 120" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-            <path d="M0 8 Q50 168 100 8" fill="none" vector-effect="non-scaling-stroke" data-rope-path />
+            <path d="M0 8 Q50 168 100 8" fill="none" vector-effect="non-scaling-stroke" />
           </svg>
           <dl class="facts" aria-label="Základné info">
             <div class="fact fact--when bg-lime">
@@ -225,7 +225,7 @@
               <dt class="fact__label">Kde</dt>
               <dd class="fact__value">Hotel Krpáčovo</dd>
               <dd class="fact__note">
-                v&nbsp;lesoch Národného parku Nízke Tatry, medzi Chopkom a&nbsp;Ďumbierom, kúsok od jazera Krpáčovo –
+                v&nbsp;lesoch Národného parku Nízke Tatry<br />
                 <a href="https://hotelkrpacovo.sk/" target="_blank" rel="noopener" class="underline whitespace-nowrap"
                   >web hotela<span class="sr-only"> (otvorí sa v novom okne)</span></a
                 >

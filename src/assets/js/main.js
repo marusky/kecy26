@@ -388,53 +388,19 @@
     });
   }
 
-  /* ——— Desktop: šnúra s kartičkami cez celú šírku obrazovky ———
-     Kartičky ostávajú tam, kde ich má CSS (--drop); šnúra sa nakreslí od ľavého po pravý okraj okna
-     hladkou krivkou (Catmull-Rom) cez body, kde štipce držia kartičky. Bez JS ostane krátka šnúra s klincami. */
-  function initFactsRope() {
-    const wrap = document.querySelector("[data-facts-rope]");
-    const svg = wrap?.querySelector(".facts-rope");
-    const path = wrap?.querySelector("[data-rope-path]");
-    if (!wrap || !svg || !path) return;
-    const lg = window.matchMedia("(min-width: 64rem)");
-
-    function draw() {
-      if (!lg.matches) return;
-      const vw = document.documentElement.clientWidth;
-      const box = wrap.getBoundingClientRect();
-      const left = box.left;
-      // offset* (voči .facts) nezávisí od rotácie (hojdania) kartičiek; bod otáčania je 14 px nad kartičkou
-      const pins = [...wrap.querySelectorAll(".fact")]
-        .map((c) => {
-          const parent = c.offsetParent.getBoundingClientRect();
-          return { x: parent.left + c.offsetLeft + c.offsetWidth / 2, y: parent.top - box.top + c.offsetTop - 14 };
-        })
-        .sort((a, b) => a.x - b.x);
-      if (!pins.length) return;
-      const edgeY = Math.min(...pins.map((p) => p.y)) - 34;
-      const pts = [{ x: -4, y: edgeY }, ...pins, { x: vw + 4, y: edgeY }];
-      let d = `M${pts[0].x} ${pts[0].y}`;
-      for (let i = 0; i < pts.length - 1; i++) {
-        const p0 = pts[i - 1] ?? pts[i];
-        const p1 = pts[i];
-        const p2 = pts[i + 1];
-        const p3 = pts[i + 2] ?? p2;
-        const c1 = { x: p1.x + (p2.x - p0.x) / 6, y: p1.y + (p2.y - p0.y) / 6 };
-        const c2 = { x: p2.x - (p3.x - p1.x) / 6, y: p2.y - (p3.y - p1.y) / 6 };
-        d += ` C${c1.x.toFixed(1)} ${c1.y.toFixed(1)} ${c2.x.toFixed(1)} ${c2.y.toFixed(1)} ${p2.x.toFixed(1)} ${p2.y.toFixed(1)}`;
-      }
-      svg.style.left = `${-left}px`;
-      svg.style.width = `${vw}px`;
-      svg.setAttribute("viewBox", `0 0 ${vw} ${svg.clientHeight || 120}`);
-      svg.setAttribute("preserveAspectRatio", "none");
-      path.setAttribute("d", d);
-      wrap.classList.add("is-full");
-    }
-
-    draw();
-    new ResizeObserver(draw).observe(wrap);
-    lg.addEventListener("change", draw);
-    document.fonts?.ready.then(draw);
+  /* ——— Desktop: kartička na šnúre sa pri prejdení myšou rozkolíše dopredu a dozadu ———
+     Trieda sa zhodí až po dobehnutí animácie, takže kolísanie sa nepreruší, keď myš odíde. */
+  function initFactsSwing() {
+    const canHover = window.matchMedia("(hover: hover) and (min-width: 64rem) and (prefers-reduced-motion: no-preference)");
+    document.querySelectorAll(".facts > .fact").forEach((card) => {
+      card.addEventListener("mouseenter", () => {
+        if (!canHover.matches || card.classList.contains("is-swinging")) return;
+        card.classList.add("is-swinging");
+      });
+      card.addEventListener("animationend", (e) => {
+        if (e.animationName === "fact-swing") card.classList.remove("is-swinging");
+      });
+    });
   }
 
   /* ——— /registracia/: vybraný track z URL ——— */
@@ -450,7 +416,7 @@
 
   initRegistration();
   initPrices();
-  initFactsRope();
+  initFactsSwing();
   initPhotoMarquees();
   initStack();
   initVideo();
