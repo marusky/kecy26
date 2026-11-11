@@ -1162,7 +1162,7 @@
     .facts > .fact.is-swinging {
       animation:
         fact-sway var(--sway) ease-in-out var(--sway-delay) infinite alternate,
-        fact-swing 2.2s linear;
+        fact-swing 2s linear;
     }
     .fact--when {
       --sway: 5.2s;
@@ -1184,27 +1184,27 @@
       animation-timing-function: ease-out;
     }
     10% {
-      transform: perspective(700px) rotateX(-26deg);
+      transform: perspective(700px) rotateX(-15deg);
       animation-timing-function: ease-in-out;
     }
     28% {
-      transform: perspective(700px) rotateX(18deg);
+      transform: perspective(700px) rotateX(10deg);
       animation-timing-function: ease-in-out;
     }
     45% {
-      transform: perspective(700px) rotateX(-11deg);
+      transform: perspective(700px) rotateX(-6deg);
       animation-timing-function: ease-in-out;
     }
     61% {
-      transform: perspective(700px) rotateX(6.5deg);
+      transform: perspective(700px) rotateX(3.5deg);
       animation-timing-function: ease-in-out;
     }
     76% {
-      transform: perspective(700px) rotateX(-3.5deg);
+      transform: perspective(700px) rotateX(-1.8deg);
       animation-timing-function: ease-in-out;
     }
     89% {
-      transform: perspective(700px) rotateX(1.5deg);
+      transform: perspective(700px) rotateX(0.7deg);
       animation-timing-function: ease-in-out;
     }
     100% {
