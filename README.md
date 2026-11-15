@@ -25,10 +25,10 @@ Kým v repozitári nie sú secrets (nižšie), krok nasadenia sa preskočí s up
    Account Resources = účet, v ktorom je zóna ecavza.sk, Zone Resources = Specific zone `ecavza.sk`.
 2. **GitHub (marusky/kecy26) → Settings → Secrets and variables → Actions:**
    `CLOUDFLARE_API_TOKEN` (token z bodu 1) a `CLOUDFLARE_ACCOUNT_ID` (Account ID účtu so zónou ecavza.sk).
-3. **Prepnutie (pár minút výpadku kecy.ecavza.sk):** v Cloudflare → ecavza.sk → DNS zmaž záznam `kecy`
-   (A 195.181.248.21, starý web 2026). Custom domain Workera nesmie mať existujúci záznam, Cloudflare si ho vytvorí sám.
-   Potom spusti *Actions → CI → Run workflow*.
-4. Voliteľne: GitHub Pages už netreba (*Settings → Pages* → vypnúť).
+3. **DNS:** custom domain Workera nesmie mať existujúci záznam s rovnakým názvom, Cloudflare si ho vytvorí sám.
+   V zóne ecavza.sk samostatný záznam `kecy` nebol (starý web chytal wildcard `*` → 195.181.248.21), takže stačilo
+   spustiť *Actions → CI → Run workflow*. Záznam custom domain má prednosť pred wildcardom, ostatné subdomény ostávajú na `*`.
+4. GitHub Pages už netreba (*Settings → Pages* → vypnúť).
 
 ### Ručný deploy
 
