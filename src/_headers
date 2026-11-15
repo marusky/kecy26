@@ -1,0 +1,19 @@
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  X-Frame-Options: DENY
+
+# Fonty sa nikdy nemenia (pri zmene by mali nový názov).
+/assets/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# CSS a JS sa načítavajú s ?v=<build>, takže nová verzia má vždy novú URL.
+/assets/css/*
+  Cache-Control: public, max-age=31536000, immutable
+/assets/js/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Obrázky si nechávajú názov aj po zmene, preto len na týždeň.
+/assets/img/*
+  Cache-Control: public, max-age=604800

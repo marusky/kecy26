@@ -1,0 +1,67 @@
+# Pri každom pushi do main zbuilduje web (npm run build → dist/) a nasadí ho na Cloudflare (wrangler deploy).
+# Jednorazové nastavenie (secrets, DNS) je v README → Nasadenie.
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  # ručné nasadenie: Actions → CI → Run workflow
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  # beh na main nerušíme, môže byť uprostred nasadzovania
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+# akcie tretích strán sú pripnuté na commit SHA (rovnako ako v mrshq)
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - run: npm run build
+
+  deploy:
+    name: Deploy na Cloudflare
+    needs: build
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    environment:
+      name: production
+      url: https://kecy.ecavza.sk
+    concurrency:
+      group: deploy-production
+      cancel-in-progress: false
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - run: npm run build
+      - name: Deploy cez Wrangler
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
+            echo "::warning::Chýbajú secrets CLOUDFLARE_API_TOKEN / CLOUDFLARE_ACCOUNT_ID – nasadenie preskočené (README → Nasadenie)."
+            exit 0
+          fi
+          npx wrangler deploy

@@ -1,0 +1,18 @@
+// Cloudflare Worker so statickými súbormi: dist/ sa servíruje priamo z edge (žiadny Worker skript).
+// Nasadzuje GitHub Actions (.github/workflows/ci.yml) po pushi do main, ručne `npm run deploy`.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "kecy26",
+  "compatibility_date": "2026-10-01",
+  "routes": [{ "pattern": "kecy.ecavza.sk", "custom_domain": true }],
+  "workers_dev": false,
+  "preview_urls": false,
+  "observability": { "enabled": true },
+  "assets": {
+    "directory": "./dist",
+    // /registracia → /registracia/
+    "html_handling": "auto-trailing-slash",
+    // neznáme URL dostanú dist/404.html so stavom 404
+    "not_found_handling": "404-page"
+  }
+}

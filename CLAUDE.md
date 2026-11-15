@@ -1,6 +1,6 @@
 # KECY Žilina 2027 – web
 
-Statický web: HTML + Tailwind CSS v4 (CLI) + vanilla JS. Build: `npm run build` → `dist/`. Nasadenie: GitHub Action `.github/workflows/deploy.yml` na GitHub Pages (push do main), alternatívne ručne cez FTP. Dev: `npm run dev` (http://localhost:5173).
+Statický web: HTML + Tailwind CSS v4 (CLI) + vanilla JS. Build: `npm run build` → `dist/`. Nasadenie: Cloudflare Worker so statickými súbormi (`wrangler.jsonc`, doména kecy.ecavza.sk), GitHub Action `.github/workflows/ci.yml` po pushi do main; ručne `npm run deploy`. Návod v README → Nasadenie. Dev: `npm run dev` (http://localhost:5173).
 
 - Zdroj dizajnu: Figma súbor KECY 26, frame „iPhone 17 Pro“ (node 189:74). Mobil je základ, desktop je vlastná interpretácia.
 - Stránky: `src/index.html` (hlavná) a `src/registracia/index.html` (info pred prihláškou, bez formulára).

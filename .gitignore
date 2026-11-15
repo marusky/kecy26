@@ -3,3 +3,4 @@ dist/
 .figma/
 .DS_Store
 fotky-originaly/
+.wrangler/
