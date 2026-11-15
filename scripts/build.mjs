@@ -12,9 +12,8 @@ const SITE_URL = (process.env.SITE_URL || "https://kecy.ecavza.sk").replace(/\/$
 const BASE_PATH = (process.env.BASE_PATH || "").replace(/\/$/, "");
 // Kam vedú tlačidlá „Registrácia“ na hlavnej stránke (tracky pridávajú ?track=english / ?track=sports).
 const REGISTER_URL = "/registracia/";
-// Externá prihláška (napr. emsreg.eu), na ktorú vedie tlačidlo na konci stránky /registracia/.
-// Keď bude link na KECY 2027, stačí ho vložiť sem.
-const FORM_URL = "https://emsreg.eu/public_otm/events/16861/registrations/landing_page"; // zatiaľ prihláška 2026
+// Externá prihláška, na ktorú vedie tlačidlo na konci stránky /registracia/.
+const FORM_URL = "https://events.ecavza.sk/kecy-zilina-2027";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const src = join(root, "src");
