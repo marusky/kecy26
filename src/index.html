@@ -88,6 +88,36 @@
         "typicalAgeRange": "13-19"
       }
     </script>
+    <!-- WebSite + Organization: názov webu vo výsledkoch Googlu namiesto holej domény, prepojenie so sociálnymi sieťami -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "%SITE_URL%/#website",
+            "name": "KECY Žilina",
+            "alternateName": ["KECY Žilina 2027", "KECY Camp Žilina", "KECY Žilina – English camp for youth"],
+            "url": "%SITE_URL%/",
+            "inLanguage": "sk",
+            "publisher": { "@id": "%SITE_URL%/#organization" }
+          },
+          {
+            "@type": "Organization",
+            "@id": "%SITE_URL%/#organization",
+            "name": "KECY Žilina",
+            "alternateName": "KECY Camp Žilina",
+            "url": "%SITE_URL%/",
+            "logo": "%SITE_URL%/icon-512.png",
+            "email": "kecyza@gmail.com",
+            "telephone": "+421903350450",
+            "description": "Anglicko-konverzačný tábor pre ôsmakov, deviatakov a stredoškolákov, organizovaný mladými kresťanmi zo Žiliny v spolupráci s Američanmi.",
+            "areaServed": "SK",
+            "sameAs": ["https://www.instagram.com/kecy_za/", "https://www.facebook.com/kecyza/", "https://www.youtube.com/@kecyza1721"]
+          }
+        ]
+      }
+    </script>
   </head>
 
   <body class="bg-ink font-sans text-ink">

@@ -1,0 +1,39 @@
+# KECY Žilina 2027 – English camp for youth
+
+> KECY Žilina je anglicko-konverzačný letný tábor (camp) pre ôsmakov, deviatakov a stredoškolákov (približne 13 – 19 rokov), ktorý organizujú mladí kresťania zo Žiliny (zbor Evanjelickej cirkvi v Žiline) v spolupráci s KECY Slovensko a Američanmi. Ročník 2027 bude 18. – 24. júla 2027 v Hoteli Krpáčovo v Národnom parku Nízke Tatry. Kapacita je 50 miest, cena od 245 €.
+
+## Základné informácie
+
+- Termín: nedeľa 18. 7. – sobota 24. 7. 2027 (7 dní)
+- Miesto: Hotel Krpáčovo, Krpáčovo 471, 976 98 Horná Lehota (Nízke Tatry), Slovensko
+- Pre koho: žiaci 8. a 9. ročníka ZŠ a stredoškoláci
+- Kapacita: 50 miest, miesto je isté po zaplatení zálohy 50 €
+- Registrácia: od 15. 11. 2026 do 30. 6. 2027 alebo do naplnenia kapacity
+- Výber z dvoch trackov:
+  - English track – dopoludňajšie hodiny konverzačnej angličtiny s Američanmi, hravo a inak ako v škole
+  - Sports track – dopoludňajší tréning amerických športov s Američanmi, menej angličtiny
+- Program dňa: raňajky, track s Američanmi, poobede teambuilding, súťaže, crafts alebo US sports, večer zábava aj rozhovory o živote a o Bohu, v noci oheň, kapela, diskotéka
+
+## Cena
+
+- do 31. 1. 2027: 245 €
+- 1. 2. – 15. 4. 2027: 260 €
+- od 16. 4. 2027: 275 €
+- Zľava za kamoša: keď pozveš niekoho, kto na KECY ešte nebol, obaja máte −25 €
+- Záloha 50 € uzamkne miesto aj aktuálnu cenu, doplatok do 30. 6. 2027
+- Štipendium až do 90 % ceny pre tých, pre ktorých je cena problém (žiadosť e-mailom na kecy@ecavza.sk)
+- V cene: 7 dní programu, ubytovanie s plnou penziou v Hoteli Krpáčovo, výlety, táborový merch, americké sladkosti
+
+## Kontakt
+
+- Lukáš Kopún, vedúci campu: +421 903 350 450
+- Evka Belancová, komunikácia: kecyza@gmail.com
+- Instagram: https://www.instagram.com/kecy_za/
+- Facebook: https://www.facebook.com/kecyza/
+- YouTube: https://www.youtube.com/@kecyza1721
+
+## Stránky
+
+- [Hlavná stránka](%SITE_URL%/): o tábore, tracky, program, skúsenosti účastníkov, fotky, cena, kontakt
+- [Registrácia](%SITE_URL%/registracia/): cena, záloha, zľava za kamoša, štipendium, storno podmienky, pravidlá a odkaz na prihlášku
+- [Prihláška](%FORM_URL%): online registračný formulár

@@ -54,8 +54,8 @@ src/
   assets/js/main.js   – pás „viacinfo“, citáty, lightbox, video
   assets/img/         – obrázky (WebP)
   404.html, _headers  – stránka 404 a HTTP hlavičky pre Cloudflare
-  robots.txt, sitemap.xml, favicon…
+  robots.txt, sitemap.xml, llms.txt, favicon…
 scripts/build.mjs     – build (kopíruje src → dist, fonty, minifikuje CSS)
 ```
 
-Nová podstránka (napr. `/registracia/`) = `src/registracia/index.html` + pridať do `sitemap.xml`.
+Nová podstránka (napr. `/registracia/`) = `src/registracia/index.html` + pridať do `sitemap.xml` a `llms.txt`.

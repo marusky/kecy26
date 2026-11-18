@@ -20,6 +20,8 @@ const src = join(root, "src");
 const dist = join(root, "dist");
 const watchMode = process.argv.includes("--watch");
 const buildId = Date.now().toString(36);
+// <lastmod> v sitemap.xml (nasadzuje sa len pri zmene, takže dátum buildu = dátum poslednej zmeny)
+const buildDate = new Date().toISOString().slice(0, 10);
 
 const fonts = {
   "bricolage-grotesque-latin.woff2": "@fontsource-variable/bricolage-grotesque/files/bricolage-grotesque-latin-standard-normal.woff2",
@@ -54,6 +56,7 @@ function copyStatic() {
         .replaceAll("%SITE_URL%", SITE_URL)
         .replaceAll("%REGISTER_URL%", REGISTER_URL.startsWith("/") ? BASE_PATH + REGISTER_URL : REGISTER_URL)
         .replaceAll("%FORM_URL%", FORM_URL)
+        .replaceAll("%BUILD_DATE%", buildDate)
         .replaceAll("%BUILD%", buildId),
     );
   }
